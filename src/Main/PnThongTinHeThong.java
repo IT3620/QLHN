@@ -51,7 +51,7 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
         txtcanngheont.setText(""+HeThong.canNgheoNT);
         txtcanngheott.setText(""+HeThong.canNgheoTT);
         txtnamngheo.setText(""+HeThong.namNgheo);
-        
+        cbttrangthai.setSelected(userInfo.isTrangThai());
     }
 
     /**
@@ -72,7 +72,7 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
         txtngheott = new javax.swing.JTextField();
         txtnheont = new javax.swing.JTextField();
         txtnamngheo = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbttrangthai = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txthoten = new javax.swing.JTextField();
@@ -88,6 +88,7 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txthuyen = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(900, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,14 +128,14 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
         txtnamngheo.setEditable(false);
         txtnamngheo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtnamngheo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jLayeredPane1.add(txtnamngheo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 114, -1));
+        jLayeredPane1.add(txtnamngheo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 114, -1));
 
-        jCheckBox1.setText("Quyền chỉnh sửa");
-        jCheckBox1.setEnabled(false);
-        jLayeredPane1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 120, -1, -1));
+        cbttrangthai.setEnabled(false);
+        cbttrangthai.setFocusable(false);
+        jLayeredPane1.add(cbttrangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 120, -1, -1));
 
         jLabel9.setText("Năm nghèo");
-        jLayeredPane1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
+        jLayeredPane1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Thông tin hệ thống");
@@ -191,12 +192,15 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
         jLabel11.setText("Nghèo TT");
         jLayeredPane1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 275, -1, -1));
 
-        add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
+        jLabel5.setText("Quyền chỉnh sửa");
+        jLayeredPane1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
+
+        add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, 340));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox cbttrangthai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -205,6 +209,7 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

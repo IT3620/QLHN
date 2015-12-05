@@ -218,6 +218,8 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
     private void bttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemActionPerformed
         // TODO add your handling code here:
+        
+        
         String tenChuHo = txtchuho.getText();
         int idHuyen = cbxhuyen.getSelectedIndex();
         int idXa =cbxxa.getSelectedIndex();
@@ -273,6 +275,9 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
         int index = tbdstimkiem.getSelectedRow();
+        if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
+            JOptionPane.showMessageDialog(bttimkiem, "Bạn không có quyền chỉnh sửa hộ nghèo", "Thông báo lỗi", 2);
+        }
         if (index < 0)
             return;
         int idHoNgheo = (int)tbdstimkiem.getValueAt(index, 0);

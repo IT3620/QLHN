@@ -224,7 +224,7 @@ public class FormCanBo extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
-            JOptionPane.showMessageDialog(this, "Bạn không có thêm hộ nghèo");
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm hộ nghèo");
             return;
         }
         for (Component frmChild : pnNoiDung.getComponents()) {
@@ -318,7 +318,7 @@ public class FormCanBo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
          if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
-            JOptionPane.showMessageDialog(this, "Bạn không có thêm hộ nghèo");
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm hộ nghèo");
             return;
         }
         for (Component frmChild : pnNoiDung.getComponents()) {
