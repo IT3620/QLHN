@@ -470,7 +470,9 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
 
     private void txtthunhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtthunhapFocusLost
         // TODO add your handling code here:
-        int tn = 0;
+        int tn;
+        if (txtthunhap.getText().equals(""))
+            return;
         try {
             tn = Integer.parseInt(txtthunhap.getText()) * 1000;
         } catch (Exception ex) {

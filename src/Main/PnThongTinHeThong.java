@@ -63,210 +63,135 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel11 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        lbxa = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         txtcap = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txthuyen = new javax.swing.JTextField();
-        txtxa = new javax.swing.JTextField();
-        lbhuyen = new javax.swing.JLabel();
-        txttinh = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtcanngheont = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         txtcanngheott = new javax.swing.JTextField();
-        txtnheont = new javax.swing.JTextField();
         txtngheott = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        txtnheont = new javax.swing.JTextField();
         txtnamngheo = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txthoten = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lbxa = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtcanngheont = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txttinh = new javax.swing.JTextField();
+        lbhuyen = new javax.swing.JLabel();
+        txtxa = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txthuyen = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(900, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setText("Nghèo TT");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Địa bàn quản lý");
-
-        jLabel10.setText("Nghèo NT");
-
-        lbxa.setText("Xã");
-
-        jLabel13.setText("Cận Nghèo TT");
-
-        jLabel12.setText("Cận nghèo NT");
-
-        jLabel3.setText("Cấp quản lý");
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtcap.setEditable(false);
         txtcap.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcap.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txtcap, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 81, 180, -1));
 
         jLabel2.setText("Họ tên");
+        jLayeredPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 53, 77, -1));
 
-        txthuyen.setEditable(false);
-        txthuyen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txthuyen.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLabel12.setText("Cận nghèo NT");
+        jLayeredPane1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
 
-        txtxa.setEditable(false);
-        txtxa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtxa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        lbhuyen.setText("Huyện");
-
-        txttinh.setEditable(false);
-        txttinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txttinh.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        jLabel7.setText("Tỉnh");
-
-        txtcanngheont.setEditable(false);
-        txtcanngheont.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtcanngheont.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLabel3.setText("Cấp quản lý");
+        jLayeredPane1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, 77, -1));
 
         txtcanngheott.setEditable(false);
         txtcanngheott.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcanngheott.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        txtnheont.setEditable(false);
-        txtnheont.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtnheont.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txtcanngheott, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 114, -1));
 
         txtngheott.setEditable(false);
         txtngheott.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtngheott.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txtngheott, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 275, 114, -1));
 
-        jCheckBox1.setText("Quyền chỉnh sửa");
-        jCheckBox1.setEnabled(false);
+        txtnheont.setEditable(false);
+        txtnheont.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtnheont.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txtnheont, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 236, 114, -1));
 
         txtnamngheo.setEditable(false);
         txtnamngheo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtnamngheo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txtnamngheo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 114, -1));
+
+        jCheckBox1.setText("Quyền chỉnh sửa");
+        jCheckBox1.setEnabled(false);
+        jLayeredPane1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 120, -1, -1));
 
         jLabel9.setText("Năm nghèo");
+        jLayeredPane1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Thông tin hệ thống");
+        jLayeredPane1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 201, -1, -1));
 
         txthoten.setEditable(false);
         txthoten.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txthoten.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txthoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 49, 180, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Thông tin người dùng");
+        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jCheckBox1)
-                                            .addComponent(txthoten)
-                                            .addComponent(txtcap, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel10))
-                                        .addGap(114, 114, 114)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtnheont, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtngheott, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbhuyen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbxa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txthuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtxa, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txttinh, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtnamngheo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtcanngheott, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtcanngheont, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(txttinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtcap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbhuyen)
-                    .addComponent(txthuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbxa)
-                    .addComponent(jCheckBox1)
-                    .addComponent(txtxa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addComponent(jLabel8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtnamngheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtnheont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(txtcanngheont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtngheott, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13)
-                                .addComponent(txtcanngheott, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(237, 237, 237))
-        );
+        lbxa.setText("Xã");
+        jLayeredPane1.add(lbxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 51, -1));
+
+        jLabel10.setText("Nghèo NT");
+        jLayeredPane1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+
+        txtcanngheont.setEditable(false);
+        txtcanngheont.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtcanngheont.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txtcanngheont, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 114, -1));
+
+        jLabel7.setText("Tỉnh");
+        jLayeredPane1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 51, -1));
+
+        jLabel13.setText("Cận Nghèo TT");
+        jLayeredPane1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
+
+        txttinh.setEditable(false);
+        txttinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txttinh.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txttinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 187, -1));
+
+        lbhuyen.setText("Huyện");
+        jLayeredPane1.add(lbhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 51, -1));
+
+        txtxa.setEditable(false);
+        txtxa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtxa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txtxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 187, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Địa bàn quản lý");
+        jLayeredPane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
+
+        txthuyen.setEditable(false);
+        txthuyen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txthuyen.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLayeredPane1.add(txthuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 187, -1));
+
+        jLabel11.setText("Nghèo TT");
+        jLayeredPane1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 275, -1, -1));
+
+        add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -283,6 +208,7 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lbhuyen;
     private javax.swing.JLabel lbxa;
     private javax.swing.JTextField txtcanngheont;

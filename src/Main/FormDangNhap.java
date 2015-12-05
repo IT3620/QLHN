@@ -41,6 +41,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đăng nhập");
 
         jLabel1.setText("Tên đăng nhập");
 
@@ -129,7 +130,7 @@ public class FormDangNhap extends javax.swing.JFrame {
                         
                         FormCanBo frm = new FormCanBo(userInfo); 
                         frm.setVisible(true);
-                        this.setVisible(false);
+                        this.dispose();
                 }
                 else 
                 {

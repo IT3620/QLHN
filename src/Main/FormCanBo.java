@@ -8,6 +8,8 @@ package Main;
 import Control.DKCanBo;
 import Entity.CanBo;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,6 +32,10 @@ public class FormCanBo extends javax.swing.JFrame {
         this.userInfo = userInfo;
         initComponents();
 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        
         DKCanBo.layThongTinHeThong();
         if (userInfo.getCapQL() == 3)
             userInfo.setIdKhuVuc(DKCanBo.layKhuVuc(userInfo.getDiaBanQL()).id);
@@ -83,16 +89,19 @@ public class FormCanBo extends javax.swing.JFrame {
         jMenuItem5.setText("jMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Phần mềm quản lý hộ nghèo - Nhóm 2");
         setBackground(new java.awt.Color(102, 102, 102));
         setForeground(new java.awt.Color(153, 153, 153));
         setMaximumSize(new java.awt.Dimension(1920, 1280));
         setMinimumSize(new java.awt.Dimension(1044, 668));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnNoiDung.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         pnNoiDung.setMinimumSize(new java.awt.Dimension(893, 604));
         pnNoiDung.setPreferredSize(new java.awt.Dimension(900, 600));
         pnNoiDung.setLayout(new javax.swing.BoxLayout(pnNoiDung, javax.swing.BoxLayout.LINE_AXIS));
+        getContentPane().add(pnNoiDung, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 41, 1137, 631));
 
         jButton1.setText("Thêm hộ nghèo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +109,7 @@ public class FormCanBo extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 41, 123, -1));
 
         jButton2.setText("Tìm kiếm");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +117,7 @@ public class FormCanBo extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 82, 123, -1));
 
         jButton4.setText("Báo cáo");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +125,7 @@ public class FormCanBo extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 123, 123, -1));
 
         jButton5.setText("Báo cáo số liệu");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +133,7 @@ public class FormCanBo extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 164, 123, -1));
 
         jButton6.setText("Quản trị hệ thống");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -128,12 +141,15 @@ public class FormCanBo extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 205, 123, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Nhóm 2");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 8, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setText("Phần mềm quản lý hộ nghèo");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 8, 200, -1));
 
         jMenu1.setText("Quản lý");
 
@@ -200,50 +216,6 @@ public class FormCanBo extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnNoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 1137, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnNoiDung, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6)
-                        .addContainerGap(444, Short.MAX_VALUE))))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
