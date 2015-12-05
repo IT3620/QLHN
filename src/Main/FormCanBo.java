@@ -21,6 +21,7 @@ public class FormCanBo extends javax.swing.JFrame {
      */
     private static PnThongTinHeThong pnThongTin;
     private static PnBaoCaoDanhSach pnBaoCao;
+    private static PnBaoCaoSoLieu pnBaoCaoSL;
     private static CanBo userInfo;
     private static PnThemHoNgheo pnThemHoNgheo;
     private static PnTimKiemHoNgheo pnTimKiem;
@@ -38,7 +39,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
 
         if (pnThongTin == null) {
-            pnThongTin = new PnThongTinHeThong();
+            pnThongTin = new PnThongTinHeThong(userInfo);
             pnNoiDung.add(pnThongTin);
             pnThongTin.setVisible(true);
             pnNoiDung.validate();
@@ -47,7 +48,6 @@ public class FormCanBo extends javax.swing.JFrame {
             pnNoiDung.validate();
 
         }
-
     }
 
     /**
@@ -75,7 +75,7 @@ public class FormCanBo extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menubaocaodanhsach = new javax.swing.JMenuItem();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        menubaocaodanhsach1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -93,14 +93,39 @@ public class FormCanBo extends javax.swing.JFrame {
         pnNoiDung.setLayout(new javax.swing.BoxLayout(pnNoiDung, javax.swing.BoxLayout.LINE_AXIS));
 
         jButton1.setText("Thêm hộ nghèo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Tìm kiếm");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Báo cáo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Báo cáo số liệu");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Quản trị hệ thống");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Quản lý");
 
@@ -128,6 +153,11 @@ public class FormCanBo extends javax.swing.JFrame {
         jMenu4.add(jMenuItem2);
 
         jMenuItem4.setText("Tìm kiếm khẩu nghèo");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem4);
 
         jMenuBar1.add(jMenu4);
@@ -142,14 +172,13 @@ public class FormCanBo extends javax.swing.JFrame {
         });
         jMenu2.add(menubaocaodanhsach);
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Báo cáo số liệu");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menubaocaodanhsach1.setText("Báo cáo số liệu");
+        menubaocaodanhsach1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
+                menubaocaodanhsach1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jCheckBoxMenuItem1);
+        jMenu2.add(menubaocaodanhsach1);
 
         jMenuBar1.add(jMenu2);
 
@@ -233,7 +262,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
 
         if (pnThongTin == null) {
-            pnThongTin = new PnThongTinHeThong();
+            pnThongTin = new PnThongTinHeThong(userInfo);
             pnNoiDung.add(pnThongTin);
             pnThongTin.setVisible(true);
             pnNoiDung.validate();
@@ -278,9 +307,104 @@ public class FormCanBo extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_menubaocaodanhsachActionPerformed
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+           for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnTimKiem == null) {
+            pnTimKiem = new PnTimKiemHoNgheo(userInfo);
+            pnNoiDung.add(pnTimKiem);
+            pnTimKiem.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnTimKiem.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có thêm hộ nghèo");
+            return;
+        }
+        for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+
+        if (pnThemHoNgheo == null) {
+            pnThemHoNgheo = new PnThemHoNgheo(userInfo);
+            pnNoiDung.add(pnThemHoNgheo);
+            pnThemHoNgheo.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnThemHoNgheo.setVisible(true);
+            pnNoiDung.validate();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+          for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+
+        if (pnThongTin == null) {
+            pnThongTin = new PnThongTinHeThong(userInfo);
+            pnNoiDung.add(pnThongTin);
+            pnThongTin.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnThongTin.setVisible(true);
+            pnNoiDung.validate();
+
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+            for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnBaoCao == null) {
+            pnBaoCao = new PnBaoCaoDanhSach(userInfo);
+            pnNoiDung.add(pnBaoCao);
+            pnBaoCao.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnBaoCao.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void menubaocaodanhsach1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menubaocaodanhsach1ActionPerformed
+        // TODO add your handling code here:
+          for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnBaoCaoSL == null) {
+            pnBaoCaoSL = new PnBaoCaoSoLieu(userInfo);
+            pnNoiDung.add(pnBaoCaoSL);
+            pnBaoCaoSL.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnBaoCaoSL.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_menubaocaodanhsach1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,7 +448,6 @@ public class FormCanBo extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
@@ -337,6 +460,7 @@ public class FormCanBo extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuDieuChinhHoNgheo;
     private javax.swing.JMenuItem menuThemHoNgheo;
     private javax.swing.JMenuItem menubaocaodanhsach;
+    private javax.swing.JMenuItem menubaocaodanhsach1;
     private javax.swing.JPanel pnNoiDung;
     // End of variables declaration//GEN-END:variables
 }
