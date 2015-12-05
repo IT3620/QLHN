@@ -366,8 +366,6 @@ public class DKCanBo {
         }
     }
     
-    public static ArrayList<HoNgheo> timKiemHoNgheo(String tenChuHo, int idHuyen, int idXa, int idKhuVuc, int idDanToc, int idPhanLoai, int idNguyenNhan, int thuNhapTu, int thuNhapToi) {
-        
-    }
+    
      
 }
