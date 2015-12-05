@@ -43,6 +43,9 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
             cbxxa.setSelectedIndex(userInfo.getDiaBanQL());
             cbxxa.setEnabled(false);
         }
+        
+        btsua.setEnabled(false);
+        btxoa.setEnabled(false);
     }
 
     /**
@@ -81,8 +84,8 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         txtnam = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdstimkiem = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btsua = new javax.swing.JButton();
+        btxoa = new javax.swing.JButton();
 
         jSeparator1.setMinimumSize(new java.awt.Dimension(8, 604));
 
@@ -138,22 +141,37 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã hộ nghèo", "Tên chủ hộ", "Huyện", "Xã", "Phân loại", "Nguyên nhân", "Khu vực", "Dân tộc"
+                "Mã hộ nghèo", "Tên chủ hộ", "Huyện", "Xã", "Phân loại", "Nguyên nhân", "Khu vực", "Dân tộc", "Năm"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tbdstimkiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbdstimkiemMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbdstimkiem);
 
-        jButton1.setText("Chỉnh sửa");
+        btsua.setText("Chỉnh sửa");
+        btsua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btsuaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Xóa");
+        btxoa.setText("Xóa");
+        btxoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btxoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -164,11 +182,10 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                .addComponent(txtchuho)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbxkhuvuc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtchuho)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxkhuvuc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -215,9 +232,9 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btsua)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(btxoa))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -274,11 +291,11 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btxoa)
+                    .addComponent(btsua))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -314,6 +331,38 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
             nam = Integer.parseInt(txtnam.getText());
         timKiemHoNgheo(tenChuHo, idHuyen, idXa, idKhuVuc, idDanToc, idPhanLoai, idNguyenNhan, thuNhapTu, thuNhapToi, nam);
     }//GEN-LAST:event_bttimkiemActionPerformed
+
+    private void tbdstimkiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbdstimkiemMouseClicked
+        // TODO add your handling code here:
+        int index = tbdstimkiem.getSelectedRow();
+        if (index <0)
+            return;
+        
+        btsua.setEnabled(true);
+        btxoa.setEnabled(true);
+    }//GEN-LAST:event_tbdstimkiemMouseClicked
+
+    private void btxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxoaActionPerformed
+        // TODO add your handling code here:
+        int index = tbdstimkiem.getSelectedRow();
+        if (index < 0)
+            return;
+        int idHoNgheo = (int)tbdstimkiem.getValueAt(index, 0);
+        int nam = (int)tbdstimkiem.getValueAt(index, 8);
+        if (nam != HeThong.namNgheo) {
+            JOptionPane.showMessageDialog(bttimkiem, "Không thể xóa hộ nghèo cũ", "Thông báo lỗi", 2);
+            return;
+        }
+            
+        DKCanBo.xoaKhoiDanhSachHN(idHoNgheo, nam);
+        bttimkiem.doClick();
+        btsua.setEnabled(false);
+        btxoa.setEnabled(false);
+    }//GEN-LAST:event_btxoaActionPerformed
+
+    private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btsuaActionPerformed
 
     
     
@@ -371,6 +420,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
             
         sql = "SELECT       dbo.tbHoNgheo.IDHoNgheo AS 'Mã hộ nghèo',  dbo.tbHoNgheo.TenCH AS 'Tên chủ hộ', dbo.tbHuyen.TenHuyen AS 'Huyện', dbo.tbXa.TenXa AS 'Xã'"+
                 ", dbo.tbPhanLoai.TenPL AS 'Phân loại', dbo.tbNguyenNhan.TenNN AS 'Nguyên nhân', dbo.tbKhuVuc.TenKhuVuc AS 'Khu vực', dbo.tbDanToc.TenDT AS 'Dân tộc'\n" +
+                ", dbo.tbDanhSachHN.NamNgheo AS Năm " +
 "FROM            dbo.tbDanhSachHN INNER JOIN\n" +
 "                         dbo.tbHoNgheo ON dbo.tbDanhSachHN.IDHoNgheo = dbo.tbHoNgheo.IDHoNgheo INNER JOIN\n" +
 "                         dbo.tbDanToc ON dbo.tbHoNgheo.IDDanToc = dbo.tbDanToc.IDDanToc INNER JOIN\n" +
@@ -434,15 +484,15 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 cbxxa.addItem(xa.id + "." + xa.ten);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btsua;
     private javax.swing.JButton bttimkiem;
+    private javax.swing.JButton btxoa;
     private javax.swing.JComboBox<String> cbxdantoc;
     private javax.swing.JComboBox<String> cbxhuyen;
     private javax.swing.JComboBox<String> cbxkhuvuc;
     private javax.swing.JComboBox<String> cbxnguyennhan;
     private javax.swing.JComboBox<String> cbxphanloai;
     private javax.swing.JComboBox<String> cbxxa;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

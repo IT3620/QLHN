@@ -95,7 +95,7 @@ public class DKCanBo {
     
     public static void xoaKhoiDanhSachHN(int idHoNgheo, int namNgheo) {
         try {
-            String sql = "DELETE FROM dbo.DanhSachHN WHERE IDHoNgheo = " + idHoNgheo + " AND NamNgheo = " + namNgheo;
+            String sql = "DELETE FROM dbo.tbDanhSachHN WHERE IDHoNgheo = " + idHoNgheo + " AND NamNgheo = " + namNgheo;
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
         } catch (Exception ex) {
