@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import Control.UpdataTable;
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 /**
  *
@@ -46,7 +47,12 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         
         btsua.setEnabled(false);
         btxoa.setEnabled(false);
+        
+     
+       
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -362,6 +368,12 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
     private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
+        int index = tbdstimkiem.getSelectedRow();
+        if (index < 0)
+            return;
+        int idHoNgheo = (int)tbdstimkiem.getValueAt(index, 0);
+        FrChinhSuaHoNgheo frChinhSuaHoNgheo = new FrChinhSuaHoNgheo(userInfo, idHoNgheo);
+        frChinhSuaHoNgheo.setVisible(true);
     }//GEN-LAST:event_btsuaActionPerformed
 
     

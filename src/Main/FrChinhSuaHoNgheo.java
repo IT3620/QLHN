@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Main;
 
 import Entity.DanhMuc;
@@ -12,6 +7,7 @@ import Entity.HeThong;
 import Entity.DiaBan;
 import Control.DKCanBo;
 import Entity.HoNgheo;
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,34 +23,48 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author thong
  */
-public final class PnThemHoNgheo extends javax.swing.JPanel {
+public class FrChinhSuaHoNgheo extends javax.swing.JFrame {
 
     /**
-     * Creates new form PnThemHoNgheo
+     * Creates new form FrChinhSuaHoNgheo
      */
     private static CanBo userInfo;
-    private static JFrame father;
-    private static HoNgheo hoNgheo;
-    private static final ArrayList<KhauNgheo> listkn = new ArrayList<>();
-    private static boolean themMoi = true;
+    private static ArrayList<KhauNgheo> listkn = new ArrayList<>();
+    private static int idHoNgheo;
 
-    public PnThemHoNgheo(CanBo userInfo) {
-        this.userInfo = userInfo;
-
+    public FrChinhSuaHoNgheo(CanBo userInfo, int idHoNgheo) {
+        FrChinhSuaHoNgheo.idHoNgheo = idHoNgheo;
+        FrChinhSuaHoNgheo.userInfo = userInfo;
         initComponents();
+        
         loadComBox();
         loadDiaBan();
         xemDanhSachKN();
         
-        txtnamngheo.setText("" + HeThong.namNgheo);
+           
         btchinhsua.setEnabled(false);
+        txtnamngheo.setText("" + HeThong.namNgheo);
 
         if (userInfo.isTrangThai() == false) {
             btchinhsua.setVisible(false);
-            btthemhn.setVisible(false);
+            btsua.setVisible(false);
             btthemkn.setVisible(false);
             JOptionPane.showMessageDialog(null, "Bạn hiện không có quyền thêm, liên hệ cấp quản trị cao hơn để biết thêm thông tin", "Thông báo", 2);
         }
+        
+        try {
+            HoNgheo hoNgheo = DKCanBo.layThongTinHN(idHoNgheo);
+            if (hoNgheo == null) {
+                JOptionPane.showMessageDialog(this, "Mã hộ nghèo không tồn tại", "Thông báo lỗi", 2);
+                xoaHienThi();
+            }
+            hienThiHoNgheo(hoNgheo, idHoNgheo);
+            
+        } catch (Exception ex) {
+
+        }
+        
+        txtmahn.setText("" + idHoNgheo);
     }
 
     /**
@@ -66,93 +76,76 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cbxdantocch = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtxa = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtnamngheo = new javax.swing.JTextField();
+        cbxphanloai = new javax.swing.JComboBox();
+        cbxkhuvuc = new javax.swing.JComboBox();
+        cbDaCapThe = new javax.swing.JCheckBox();
+        cbxnuoc = new javax.swing.JComboBox();
+        cbxnguyennhan = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtthunhap = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        cbxnhao = new javax.swing.JComboBox();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         cbxdantockn = new javax.swing.JComboBox();
         jLabel22 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        cbxgioitinh = new javax.swing.JComboBox();
+        txthotenkn = new javax.swing.JTextField();
         cbxquanhe = new javax.swing.JComboBox();
         jLabel18 = new javax.swing.JLabel();
-        txthotenkn = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        cbxnhao = new javax.swing.JComboBox();
-        jLabel15 = new javax.swing.JLabel();
-        cbxnguyennhan = new javax.swing.JComboBox();
-        cbxnuoc = new javax.swing.JComboBox();
-        cbDaCapThe = new javax.swing.JCheckBox();
-        jLabel13 = new javax.swing.JLabel();
-        txtthunhap = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtnamngheo = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        cbxkhuvuc = new javax.swing.JComboBox();
-        cbxphanloai = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
-        cbxdantocch = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtxa = new javax.swing.JTextField();
-        txtxom = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txthuyen = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txthotench = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        txtnamsinhkn = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        txtmahn = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        btchinhsua = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        btthemhn = new javax.swing.JButton();
-        btthemkn = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
-        cbxnghenghiep = new javax.swing.JComboBox();
+        jLabel19 = new javax.swing.JLabel();
+        cbxgioitinh = new javax.swing.JComboBox();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         cbxdoituong = new javax.swing.JComboBox();
+        cbxnghenghiep = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdanhsachkn = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        btsua = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        btthemkn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btchinhsua = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtmahn = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtnamsinhkn = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        txthotench = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txthuyen = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtxom = new javax.swing.JTextField();
 
-        jLabel22.setText("Nghề nghiệp");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel20.setText("Năm Sinh");
+        jLabel9.setText("Phân Loại");
 
-        jLabel21.setText("Dân tộc");
+        jLabel7.setText("Huyện");
 
-        jLabel19.setText("Giới tính");
+        jLabel8.setText("Dân Tộc");
 
-        cbxgioitinh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1.Nam", "2.Nữ" }));
-
-        jLabel18.setText("Quan hệ với chủ hộ");
-
-        jLabel17.setText("Họ tên");
-
-        jLabel16.setBackground(new java.awt.Color(0, 0, 153));
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel16.setText("KHẨU NGHÈO");
-
-        jLabel14.setText("Nhà ở");
-
-        jLabel15.setText("Nguyên nhân nghèo");
-
-        cbDaCapThe.setText("Đã cấp thẻ");
-
-        jLabel13.setText("Nước sạch");
-
-        txtthunhap.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtthunhap.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtthunhapFocusLost(evt);
-            }
-        });
+        txtxa.setEditable(false);
+        txtxa.setBackground(new java.awt.Color(204, 204, 204));
+        txtxa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtxa.setEnabled(false);
+        txtxa.setFocusable(false);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Thu nhập");
+
+        jLabel12.setText("Năm nghèo");
 
         txtnamngheo.setEditable(false);
         txtnamngheo.setBackground(new java.awt.Color(204, 204, 204));
@@ -160,7 +153,9 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         txtnamngheo.setEnabled(false);
         txtnamngheo.setFocusable(false);
 
-        jLabel12.setText("Năm nghèo");
+        cbxphanloai.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbxphanloai.setEnabled(false);
+        cbxphanloai.setFocusable(false);
 
         cbxkhuvuc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         cbxkhuvuc.setEnabled(false);
@@ -171,92 +166,40 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
             }
         });
 
-        cbxphanloai.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cbxphanloai.setEnabled(false);
-        cbxphanloai.setFocusable(false);
+        cbDaCapThe.setText("Đã cấp thẻ");
 
-        jLabel9.setText("Phân Loại");
+        jLabel2.setText("Mã hộ nghèo");
 
-        jLabel8.setText("Dân Tộc");
+        jLabel15.setText("Nguyên nhân nghèo");
 
-        jLabel7.setText("Huyện");
-
-        txtxa.setEditable(false);
-        txtxa.setBackground(new java.awt.Color(204, 204, 204));
-        txtxa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        txtxa.setEnabled(false);
-        txtxa.setFocusable(false);
-
-        jLabel3.setText("Xã");
-
-        txthuyen.setEditable(false);
-        txthuyen.setBackground(new java.awt.Color(204, 204, 204));
-        txthuyen.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        txthuyen.setEnabled(false);
-        txthuyen.setFocusable(false);
-
-        jLabel6.setText("Khu Vực");
-
-        txthotench.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtthunhap.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtthunhap.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txthotenchFocusLost(evt);
+                txtthunhapFocusLost(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton6.setText("Hủy");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
+        jLabel13.setText("Nước sạch");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Tên chủ hộ");
+        jLabel14.setText("Nhà ở");
 
-        jLabel24.setText("000 VNĐ/Người/Tháng");
+        jLabel16.setBackground(new java.awt.Color(0, 0, 153));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel16.setText("KHẨU NGHÈO");
 
-        txtmahn.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtmahnFocusLost(evt);
-            }
-        });
+        jLabel17.setText("Họ tên");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("THÊM HỘ NGHÈO");
+        jLabel22.setText("Nghề nghiệp");
 
-        jLabel5.setText("Thôn/Xóm");
+        jLabel18.setText("Quan hệ với chủ hộ");
 
-        btchinhsua.setText("Chỉnh sửa");
-        btchinhsua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btchinhsuaActionPerformed(evt);
-            }
-        });
+        jLabel19.setText("Giới tính");
 
-        jButton3.setText("Xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        cbxgioitinh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1.Nam", "2.Nữ" }));
 
-        btthemhn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btthemhn.setText("Thêm mới");
-        btthemhn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btthemhnActionPerformed(evt);
-            }
-        });
+        jLabel20.setText("Năm Sinh");
 
-        btthemkn.setText("Thêm khẩu nghèo");
-        btthemkn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btthemknActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setText("Đối tượng chính sách");
+        jLabel21.setText("Dân tộc");
 
         tbdanhsachkn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -273,16 +216,81 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbdanhsachkn);
 
-        jLabel2.setText("Mã hộ nghèo");
+        btsua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btsua.setText("Chỉnh sửa");
+        btsua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btsuaActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        jButton3.setText("Xóa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setText("Đối tượng chính sách");
+
+        btthemkn.setText("Thêm khẩu nghèo");
+        btthemkn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btthemknActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Chỉnh sửa hộ nghèo");
+
+        btchinhsua.setText("Chỉnh sửa");
+        btchinhsua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btchinhsuaActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Thôn/Xóm");
+
+        txtmahn.setEditable(false);
+        txtmahn.setEnabled(false);
+
+        jLabel24.setText("000 VNĐ/Người/Tháng");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Tên chủ hộ");
+
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton6.setText("Hủy");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        txthotench.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txthotenchFocusLost(evt);
+            }
+        });
+
+        jLabel6.setText("Khu Vực");
+
+        txthuyen.setEditable(false);
+        txthuyen.setBackground(new java.awt.Color(204, 204, 204));
+        txthuyen.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txthuyen.setEnabled(false);
+        txthuyen.setFocusable(false);
+
+        jLabel3.setText("Xã");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btthemkn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -292,7 +300,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(btthemhn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btsua, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(32, 32, 32)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
@@ -389,7 +397,8 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                                     .addGap(54, 54, 54)
                                     .addComponent(cbxnghenghiep, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE)))))
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 1071, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 1071, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -462,11 +471,17 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btthemhn)
+                    .addComponent(btsua)
                     .addComponent(jButton6))
                 .addGap(13, 13, 13))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbxkhuvucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxkhuvucActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxkhuvucActionPerformed
 
     private void txtthunhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtthunhapFocusLost
         // TODO add your handling code here:
@@ -504,44 +519,48 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtthunhapFocusLost
 
-    private void cbxkhuvucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxkhuvucActionPerformed
+    private void tbdanhsachknMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbdanhsachknMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxkhuvucActionPerformed
+        int index = tbdanhsachkn.getSelectedRow();
+        KhauNgheo khauNgheo = listkn.get(index);
+        hienThiKhauNgheo(khauNgheo);
+        btchinhsua.setEnabled(true);
+    }//GEN-LAST:event_tbdanhsachknMouseClicked
 
-    private void txthotenchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txthotenchFocusLost
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        txthotenkn.setText(txthotench.getText());
-        cbxquanhe.setSelectedIndex(0);
-    }//GEN-LAST:event_txthotenchFocusLost
+        int index = tbdanhsachkn.getSelectedRow();
+        listkn.remove(index);
+        xemDanhSachKN();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btthemknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemknActionPerformed
         // TODO add your handling code here:
-        xoaHienThi();
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void txtmahnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmahnFocusLost
-        // TODO add your handling code here:
-        if (txtmahn.getText().equals("")) {
-            themMoi = false;
-            btthemhn.setText("Thêm Mới");
-            //lbkieuthem.setText("Thêm hộ nghèo mới");
+        if (txthotenkn.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập tên khẩu nghèo");
+            return;
+        }
+        if (txtnamsinhkn.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập năm sinh khẩu nghèo");
+            return;
         }
 
         try {
-            int idHoNgheo = Integer.parseInt(txtmahn.getText());
-            HoNgheo hoNgheo = DKCanBo.layThongTinHN(idHoNgheo);
-            if (hoNgheo == null) {
-                JOptionPane.showMessageDialog(this, "Mã hộ nghèo không tồn tại", "Thông báo lỗi", 2);
-                xoaHienThi();
+            if (Integer.parseInt(txtnamsinhkn.getText()) < HeThong.namNgheo - 130) {
+                JOptionPane.showMessageDialog(this, "Năm sinh khẩu nghèo không hợp lệ");
+                return;
             }
-            hienThiHoNgheo(hoNgheo, idHoNgheo);
-            
-            themMoi = false;
-            btthemhn.setText("Thêm Cũ");
         } catch (Exception ex) {
-
+            JOptionPane.showMessageDialog(this, "Năm sinh phải là số");
+            txtnamsinhkn.setText("");
+            return;
         }
-    }//GEN-LAST:event_txtmahnFocusLost
+
+        KhauNgheo khauNgheo = new KhauNgheo(txthotenkn.getText(), getIDInt(cbxquanhe), (getIDInt(cbxgioitinh) == 1), getIDInt(cbxdantocch),
+                getIDInt(cbxnghenghiep), getIDInt(cbxdoituong), Integer.parseInt(txtnamsinhkn.getText()));
+        listkn.add(khauNgheo);
+        xemDanhSachKN();
+    }//GEN-LAST:event_btthemknActionPerformed
 
     private void btchinhsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btchinhsuaActionPerformed
         // TODO add your handling code here:
@@ -575,14 +594,18 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         btchinhsua.setEnabled(false);
     }//GEN-LAST:event_btchinhsuaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        int index = tbdanhsachkn.getSelectedRow();
-        listkn.remove(index);
-        xemDanhSachKN();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void btthemhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemhnActionPerformed
+    private void txthotenchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txthotenchFocusLost
+        // TODO add your handling code here:
+        txthotenkn.setText(txthotench.getText());
+        cbxquanhe.setSelectedIndex(0);
+    }//GEN-LAST:event_txthotenchFocusLost
+
+    private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
         try {
             if (txthotench.getText().equals("")) {
@@ -604,80 +627,61 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
             for (KhauNgheo kn : listkn) {
                 hoNgheo.themKN(kn);
             }
+            
+            
 
-            if (themMoi) {
-                int idHoNgheo = DKCanBo.themHoNgheo(hoNgheo);
-                if (idHoNgheo >= 0) {
-                    if (DKCanBo.themVaoDanhSachHN(idHoNgheo, HeThong.namNgheo)) {
-                        JOptionPane.showMessageDialog(this, "Đã thêm thành công hộ nghèo, mã hộ nghèo là:  " + idHoNgheo, "Thêm hộ nghèo thành công", 1);
-                        txtmahn.setText("" + idHoNgheo);
-                        listkn.clear();
-                    }
-                }
+          if (DKCanBo.suaHoNgheo(hoNgheo, idHoNgheo)) {
+                JOptionPane.showMessageDialog(this, "Đã sửa hộ nghèo thành công", "Thành công", 1);
             } else {
-                int idHoNgheo = Integer.parseInt(txtmahn.getText());
-                if (!DKCanBo.themVaoDanhSachHN(idHoNgheo, HeThong.namNgheo)) {
-                    JOptionPane.showMessageDialog(this, "Hộ nghèo đã được thêm lại từ trước.", "Thất bại", 1);
-                } else if (DKCanBo.suaHoNgheo(hoNgheo, idHoNgheo)) {
-                    JOptionPane.showMessageDialog(this, "Đã thêm hộ nghèo cũ thành công", "Thành công", 1);
-                } else {
-                    DKCanBo.xoaKhoiDanhSachHN(idHoNgheo, HeThong.namNgheo);
-                    JOptionPane.showMessageDialog(this, "Kiểm tra lại thông tin hộ nghèo", "Thất bại", 1);
-                }
-
+                JOptionPane.showMessageDialog(this, "Kiểm tra lại thông tin hộ nghèo", "Thất bại", 1);
             }
 
         } catch (HeadlessException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Đã có lỗi xảy ra, không thể thêm hộ nghèo", "Thông báo lỗi", 2);
+            JOptionPane.showMessageDialog(this, "Đã có lỗi xảy ra, không thể sửahộ nghèo", "Thông báo lỗi", 2);
         }
-    }//GEN-LAST:event_btthemhnActionPerformed
+    }//GEN-LAST:event_btsuaActionPerformed
 
-    private void btthemknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemknActionPerformed
-        // TODO add your handling code here:
-        if (txthotenkn.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Chưa nhập tên khẩu nghèo");
-            return;
-        }
-        if (txtnamsinhkn.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Chưa nhập năm sinh khẩu nghèo");
-            return;
-        }
-
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
         try {
-            if (Integer.parseInt(txtnamsinhkn.getText()) < HeThong.namNgheo - 130) {
-                JOptionPane.showMessageDialog(this, "Năm sinh khẩu nghèo không hợp lệ");
-                return;
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Năm sinh phải là số");
-            txtnamsinhkn.setText("");
-            return;
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FrChinhSuaHoNgheo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FrChinhSuaHoNgheo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FrChinhSuaHoNgheo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FrChinhSuaHoNgheo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
 
-        KhauNgheo khauNgheo = new KhauNgheo(txthotenkn.getText(), getIDInt(cbxquanhe), (getIDInt(cbxgioitinh) == 1), getIDInt(cbxdantocch),
-                getIDInt(cbxnghenghiep), getIDInt(cbxdoituong), Integer.parseInt(txtnamsinhkn.getText()));
-        listkn.add(khauNgheo);
-        xemDanhSachKN();
-    }//GEN-LAST:event_btthemknActionPerformed
-
-    private void tbdanhsachknMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbdanhsachknMouseClicked
-        // TODO add your handling code here:
-        int index = tbdanhsachkn.getSelectedRow();
-        KhauNgheo khauNgheo = listkn.get(index);
-        hienThiKhauNgheo(khauNgheo);
-        btchinhsua.setEnabled(true);
-    }//GEN-LAST:event_tbdanhsachknMouseClicked
-
-    private void hienThiKhauNgheo(KhauNgheo khauNgheo) {
-        txthotenkn.setText(khauNgheo.getHoTen());
-        cbxquanhe.setSelectedIndex(khauNgheo.getIdQuanHeCH() - 1);
-        cbxgioitinh.setSelectedIndex(khauNgheo.isGioiTinh() ? 0 : 1);
-        txtnamsinhkn.setText("" + khauNgheo.getNamSinh());
-        cbxdantockn.setSelectedIndex(khauNgheo.getIdDanToc() - 1);
-        cbxnghenghiep.setSelectedIndex(khauNgheo.getIdNgheNghiep() - 1);
-        cbxdoituong.setSelectedIndex(khauNgheo.getIdDoiTuong() - 1);
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                FrChinhSuaHoNgheo fr = new FrChinhSuaHoNgheo(userInfo, idHoNgheo);
+                fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                fr.setVisible(true);
+            }
+        });
     }
 
+    private void exitForm(java.awt.event.WindowEvent evt) {                          
+     this.dispose();// here [this] keyword means your current frame
+} 
     private void xoaHienThi() {
         txthotenkn.setText("");
         cbxquanhe.setSelectedIndex(0);
@@ -728,6 +732,16 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         listkn.clear();
         listkn.addAll(hoNgheo.getListKN());
         xemDanhSachKN();
+    }
+
+    private void hienThiKhauNgheo(KhauNgheo khauNgheo) {
+        txthotenkn.setText(khauNgheo.getHoTen());
+        cbxquanhe.setSelectedIndex(khauNgheo.getIdQuanHeCH() - 1);
+        cbxgioitinh.setSelectedIndex(khauNgheo.isGioiTinh() ? 0 : 1);
+        txtnamsinhkn.setText("" + khauNgheo.getNamSinh());
+        cbxdantockn.setSelectedIndex(khauNgheo.getIdDanToc() - 1);
+        cbxnghenghiep.setSelectedIndex(khauNgheo.getIdNgheNghiep() - 1);
+        cbxdoituong.setSelectedIndex(khauNgheo.getIdDoiTuong() - 1);
     }
 
     public void xemDanhSachKN() {
@@ -807,7 +821,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btchinhsua;
-    private javax.swing.JButton btthemhn;
+    private javax.swing.JButton btsua;
     private javax.swing.JButton btthemkn;
     private javax.swing.JCheckBox cbDaCapThe;
     private javax.swing.JComboBox cbxdantocch;
@@ -858,16 +872,4 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
     private javax.swing.JTextField txtxa;
     private javax.swing.JTextField txtxom;
     // End of variables declaration//GEN-END:variables
-}
-
-class MyTableModel extends DefaultTableModel {
-
-    @Override
-    public boolean isCellEditable(int row, int column) {
-        return false;
-    }
-
-    public MyTableModel(Vector data, Vector cols) {
-        super(data, cols);
-    }
 }
