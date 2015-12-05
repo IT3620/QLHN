@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import Control.UpdataTable;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -130,7 +131,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("000 VNĐ");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 50, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 50, 20));
 
         bttimkiem.setText("Tìm kiếm");
         bttimkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -166,11 +167,11 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã hộ nghèo", "Tên chủ hộ", "Huyện", "Xã", "Phân loại", "Nguyên nhân", "Khu vực", "Dân tộc", "Năm"
+                "Mã hộ nghèo", "Tên chủ hộ", "Xã", "Huyện", "Thu nhập", "Phân loại", "Nguyên nhân", "Khu vực", "Dân tộc", "Năm"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -207,7 +208,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("000 VNĐ");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 50, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 50, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxhuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxhuyenActionPerformed
@@ -218,7 +219,19 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
     private void bttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            int tu = 0, toi = 0;
+            if (!txtthunhaptu.getText().equals(""))
+              tu  = Integer.parseInt(txtthunhaptu.getText());
+            if (!txtthunhaptoi.getText().equals(""))
+              toi  = Integer.parseInt(txtthunhaptoi.getText());
+            
+            if (tu > toi || tu < 0 || toi < 0)
+                JOptionPane.showMessageDialog(bttimkiem, "Hạn mức thu nhập không hợp lệ", "Thông báo lỗi", 2);
+        } catch(NumberFormatException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(bttimkiem, "Hạn mức thu nhập không hợp lệ", "Thông báo lỗi", 2);
+            return;
+        }
         
         String tenChuHo = txtchuho.getText();
         int idHuyen = cbxhuyen.getSelectedIndex();
@@ -339,8 +352,8 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         else
             nam = "dbo.tbDanhSachHN.NamNgheo = " + namNgheo + " AND ";
             
-        sql = "SELECT       dbo.tbHoNgheo.IDHoNgheo AS 'Mã hộ nghèo',  dbo.tbHoNgheo.TenCH AS 'Tên chủ hộ', dbo.tbHuyen.TenHuyen AS 'Huyện', dbo.tbXa.TenXa AS 'Xã'"+
-                ", dbo.tbPhanLoai.TenPL AS 'Phân loại', dbo.tbNguyenNhan.TenNN AS 'Nguyên nhân', dbo.tbKhuVuc.TenKhuVuc AS 'Khu vực' , dbo.tbHoNgheo.ThuNhapTB" +
+        sql = "SELECT       dbo.tbHoNgheo.IDHoNgheo AS 'Mã hộ nghèo',  dbo.tbHoNgheo.TenCH AS 'Tên chủ hộ', dbo.tbXa.TenXa AS 'Xã', dbo.tbHuyen.TenHuyen AS 'Huyện'"+
+                ", dbo.tbPhanLoai.TenPL AS 'Phân loại', dbo.tbNguyenNhan.TenNN AS 'Nguyên nhân', dbo.tbKhuVuc.TenKhuVuc AS 'Khu vực' , dbo.tbHoNgheo.ThuNhapTB AS 'Thu nhập'" +
                 ", dbo.tbDanToc.TenDT AS 'Dân tộc'\n" + ", dbo.tbDanhSachHN.NamNgheo AS Năm " +
                 "FROM            dbo.tbDanhSachHN INNER JOIN\n" +
                 "                         dbo.tbHoNgheo ON dbo.tbDanhSachHN.IDHoNgheo = dbo.tbHoNgheo.IDHoNgheo INNER JOIN\n" +

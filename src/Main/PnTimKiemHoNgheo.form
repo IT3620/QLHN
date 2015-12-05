@@ -159,7 +159,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="400" width="50" height="-1"/>
+          <AbsoluteConstraints x="110" y="400" width="50" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -286,11 +286,12 @@
         <Component class="javax.swing.JTable" name="tbdstimkiem">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="0">
+              <Table columnCount="10" rowCount="0">
                 <Column editable="false" title="M&#xe3; h&#x1ed9; ngh&#xe8;o" type="java.lang.Object"/>
                 <Column editable="false" title="T&#xea;n ch&#x1ee7; h&#x1ed9;" type="java.lang.Object"/>
-                <Column editable="false" title="Huy&#x1ec7;n" type="java.lang.Object"/>
                 <Column editable="false" title="X&#xe3;" type="java.lang.Object"/>
+                <Column editable="false" title="Huy&#x1ec7;n" type="java.lang.Object"/>
+                <Column editable="true" title="Thu nh&#x1ead;p" type="java.lang.Object"/>
                 <Column editable="false" title="Ph&#xe2;n lo&#x1ea1;i" type="java.lang.Object"/>
                 <Column editable="false" title="Nguy&#xea;n nh&#xe2;n" type="java.lang.Object"/>
                 <Column editable="false" title="Khu v&#x1ef1;c" type="java.lang.Object"/>
@@ -348,7 +349,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="430" width="50" height="-1"/>
+          <AbsoluteConstraints x="110" y="430" width="50" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
