@@ -20,6 +20,7 @@ public class FormCanBo extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     private static PnThongTinHeThong pnThongTin;
+    private static PnBaoCaoDanhSach pnBaoCao;
     private static CanBo userInfo;
     private static PnThemHoNgheo pnThemHoNgheo;
     private static PnTimKiemHoNgheo pnTimKiem;
@@ -73,7 +74,8 @@ public class FormCanBo extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        menubaocaodanhsach = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -130,11 +132,26 @@ public class FormCanBo extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu2.setText("BC Danh sách");
-        jMenuBar1.add(jMenu2);
+        jMenu2.setText("Báo cáo");
 
-        jMenu3.setText("BC Số liệu");
-        jMenuBar1.add(jMenu3);
+        menubaocaodanhsach.setText("Báo cáo danh sách");
+        menubaocaodanhsach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menubaocaodanhsachActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menubaocaodanhsach);
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Báo cáo số liệu");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Quản trị");
 
@@ -244,6 +261,27 @@ public class FormCanBo extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void menubaocaodanhsachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menubaocaodanhsachActionPerformed
+        // TODO add your handling code here:
+          for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnBaoCao == null) {
+            pnBaoCao = new PnBaoCaoDanhSach(userInfo);
+            pnNoiDung.add(pnBaoCao);
+            pnBaoCao.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnBaoCao.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_menubaocaodanhsachActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,9 +324,9 @@ public class FormCanBo extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
@@ -298,6 +336,7 @@ public class FormCanBo extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem menuDieuChinhHoNgheo;
     private javax.swing.JMenuItem menuThemHoNgheo;
+    private javax.swing.JMenuItem menubaocaodanhsach;
     private javax.swing.JPanel pnNoiDung;
     // End of variables declaration//GEN-END:variables
 }
