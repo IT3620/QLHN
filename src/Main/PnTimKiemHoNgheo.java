@@ -5,6 +5,16 @@
  */
 package Main;
 
+import Control.DKCanBo;
+import Entity.CanBo;
+import Entity.DanhMuc;
+import Entity.DiaBan;
+import Entity.DiaBanInt;
+import Entity.HeThong;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thong
@@ -14,8 +24,21 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
     /**
      * Creates new form PnTimKiemHoNgheo
      */
-    public PnTimKiemHoNgheo() {
+    private static CanBo userInfo;
+    public PnTimKiemHoNgheo(CanBo userInfo) {
+        this.userInfo = userInfo;
         initComponents();
+        loadComboBox();
+        loadDanhSachHuyen();
+        if (userInfo.getCapQL() == 2) {
+            cbxhuyen.setEnabled(false);
+            cbxhuyen.setSelectedIndex(userInfo.getDiaBanQL() - 1);
+        }
+        if (userInfo.getCapQL() == 3) {
+            cbxhuyen.setEnabled(false);
+            DiaBanInt db = DKCanBo.layDiaBanInt(3, userInfo.getDiaBanQL());
+            cbxhuyen.setSelectedItem(db.getHuyen()-1);
+        }
     }
 
     /**
@@ -29,16 +52,16 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtchuho = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbxhuyen = new javax.swing.JComboBox<>();
+        cbxxa = new javax.swing.JComboBox<>();
+        cbxkhuvuc = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -59,11 +82,11 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
         jLabel7.setText("Tới");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxhuyen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxhuyenActionPerformed(evt);
+            }
+        });
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -88,13 +111,13 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
+                            .addComponent(txtchuho)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cbxhuyen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxxa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxkhuvuc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -125,19 +148,19 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtchuho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxhuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxxa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxkhuvuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,12 +179,44 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbxhuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxhuyenActionPerformed
+        // TODO add your handling code here:
+        int idHuyen =getIDInt(cbxhuyen);
+        loadDanhSachXa(idHuyen);
+    }//GEN-LAST:event_cbxhuyenActionPerformed
 
+     private String getIDStr(JComboBox cbx) {
+        return cbx.getSelectedItem().toString().split("\\.")[0];
+    }
+
+    private int getIDInt(JComboBox cbx) {
+        return Integer.parseInt(cbx.getSelectedItem().toString().split("\\.")[0]);
+    }
+    public void loadComboBox() {
+       
+        for (DanhMuc i : HeThong.dmKhuVuc) {
+            cbxkhuvuc.addItem(i.id + "." + i.ten);
+        }
+    }
+    
+    public void loadDanhSachHuyen() {
+        ArrayList<DanhMuc> dsHuyen = DKCanBo.layDanhSachHuyen();
+        if (dsHuyen != null)
+        for (DanhMuc huyen : dsHuyen)
+            cbxhuyen.addItem(huyen.id + "." + huyen.ten);
+    }
+
+    public void loadDanhSachXa(int huyen) {
+        ArrayList<DanhMuc> dsXa = DKCanBo.layDanhSachXa(huyen);
+        if (dsXa != null)
+            for (DanhMuc xa : dsXa) 
+                cbxxa.addItem(xa.id + "." + xa.ten);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbxhuyen;
+    private javax.swing.JComboBox<String> cbxkhuvuc;
+    private javax.swing.JComboBox<String> cbxxa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -172,8 +227,8 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtchuho;
     // End of variables declaration//GEN-END:variables
 }

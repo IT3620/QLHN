@@ -5,6 +5,7 @@ import Entity.DanhMuc;
 import Entity.HeThong;
 import Entity.DiaBan;
 import Database.Connect;
+import Entity.DiaBanInt;
 import Entity.HoNgheo;
 import Entity.KhauNgheo;
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -283,7 +285,85 @@ public class DKCanBo {
             return null;
         }
      }
+     
+     public static DiaBanInt layDiaBanInt(int cap, int ma)
+     {
+         String sql;
+        try {
+            
+             Statement st = conn.createStatement();
+             int tinh = 0, huyen = 0, xa = 0;
+             if (cap == 1)
+             {
+                sql = "SELECT dbo.tbTinh.IDTinh from dbo.tbTinh";
+                rs = st.executeQuery(sql);
+                while(rs.next())
+                {
+                    tinh = rs.getInt(1);
+                    break;
+                }
+                return new DiaBanInt(cap, tinh, 0, 0);
 
+             }
+             else if (cap == 2)
+             {
+                 sql = "SELECT dbo.tbTinh.IDTinh, dbo.tbHuyen.IDHuyen from dbo.tbTinh, dbo.tbHuyen WHERE dbo.tbHuyen.IDTinh = dbo.tbTinh.IDTinh";
+                 rs = st.executeQuery(sql);
+                while(rs.next())
+                {
+                    tinh = rs.getInt(1);
+                    huyen = rs.getInt(2);
+                    break;
+                }
+                return new DiaBanInt(cap, tinh, huyen, 0);
+             }
+             else
+             {
+                sql ="SELECT     dbo.tbTinh.IDTinh, dbo.tbHuyen.IDHuyen,  dbo.tbXa.IDXa FROM      dbo.tbXa, dbo.tbHuyen, dbo.tbTinh WHERE  dbo.tbXa.IDHuyen=dbo.tbHuyen.IDHuyen AND dbo.tbHuyen.IDTinh = dbo.tbTinh.IDTinh AND dbo.tbXa.IDXa = " + ma;
+                rs = st.executeQuery(sql);
+                while(rs.next())
+                {
+                    tinh = rs.getInt(1);
+                    huyen = rs.getInt(2);
+                    xa = rs.getInt(3);
+                    break;
+                }
+                return new DiaBanInt(cap, tinh, huyen, xa);
+             }
+             
+        } catch (Exception ex) {
+            return null;
+        }
+     }
+
+    public static ArrayList<DanhMuc> layDanhSachHuyen() {
+        ArrayList<DanhMuc> dsHuyen = null;
+        try {
+            String sql = "SELECT IDHuyen, TenHuyen FROM dbo.tbHuyen";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            dsHuyen = new ArrayList<>();
+            while (rs.next())
+                dsHuyen.add(new DanhMuc(rs.getInt(1), rs.getString(2)));
+            return dsHuyen;
+        } catch (Exception ex) {
+            return dsHuyen;
+        }
+    }
     
+    public static ArrayList<DanhMuc> layDanhSachXa(int idHuyen) {
+        ArrayList<DanhMuc> dsHuyen = null;
+        try {
+            String sql = "SELECT IDXa, TenXa FROM dbo.tbXa WHERE IDHuyen = " + idHuyen;
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            dsHuyen = new ArrayList<>();
+            while (rs.next())
+                dsHuyen.add(new DanhMuc(rs.getInt(1), rs.getString(2)));
+            return dsHuyen;
+        } catch (Exception ex) {
+            return dsHuyen;
+        }
+    }
      
 }

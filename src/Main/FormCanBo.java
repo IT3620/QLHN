@@ -22,6 +22,7 @@ public class FormCanBo extends javax.swing.JFrame {
     private static PnThongTinHeThong pnThongTin;
     private static CanBo userInfo;
     private static PnThemHoNgheo pnThemHoNgheo;
+    private static PnTimKiemHoNgheo pnTimKiem;
 
     public FormCanBo(CanBo userInfo) {
         this.userInfo = userInfo;
@@ -30,6 +31,21 @@ public class FormCanBo extends javax.swing.JFrame {
         DKCanBo.layThongTinHeThong();
         if (userInfo.getCapQL() == 3)
             userInfo.setIdKhuVuc(DKCanBo.layKhuVuc(userInfo.getDiaBanQL()).id);
+        
+        for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+
+        if (pnThongTin == null) {
+            pnThongTin = new PnThongTinHeThong();
+            pnNoiDung.add(pnThongTin);
+            pnThongTin.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnThongTin.setVisible(true);
+            pnNoiDung.validate();
+
+        }
 
     }
 
@@ -68,7 +84,6 @@ public class FormCanBo extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1044, 668));
 
         pnNoiDung.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnNoiDung.setMaximumSize(null);
         pnNoiDung.setMinimumSize(new java.awt.Dimension(893, 604));
         pnNoiDung.setPreferredSize(new java.awt.Dimension(900, 600));
         pnNoiDung.setLayout(new javax.swing.BoxLayout(pnNoiDung, javax.swing.BoxLayout.LINE_AXIS));
@@ -101,6 +116,11 @@ public class FormCanBo extends javax.swing.JFrame {
         jMenu4.setText("Tìm kiếm");
 
         jMenuItem2.setText("Tìm kiếm hộ nghèo");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem2);
 
         jMenuItem4.setText("Tìm kiếm khẩu nghèo");
@@ -204,6 +224,23 @@ public class FormCanBo extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnTimKiem == null) {
+            pnTimKiem = new PnTimKiemHoNgheo(userInfo);
+            pnNoiDung.add(pnTimKiem);
+            pnTimKiem.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnTimKiem.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
