@@ -240,7 +240,7 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
         jLabel21.setText("Dân tộc");
         getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 308, 81, -1));
 
-        getContentPane().add(cbxdoituong, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 300, 220, -1));
+        getContentPane().add(cbxdoituong, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 310, 220, -1));
 
         getContentPane().add(cbxnghenghiep, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 305, 139, -1));
 

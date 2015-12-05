@@ -80,8 +80,6 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         cbxphanloai = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         cbxnguyennhan = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        cbxdantoc = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         txtnam = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -90,48 +88,53 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         btxoa = new javax.swing.JButton();
         txtthunhaptoi = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        cbxdantoc = new javax.swing.JComboBox<>();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Tên chủ hộ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 0, 160, -1));
-        add(txtchuho, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 20, 160, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 170, -1));
+
+        txtchuho.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        add(txtchuho, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 20, 170, -1));
 
         jLabel2.setText("Quận huyện");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 51, 159, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 51, 170, -1));
 
         jLabel3.setText("Xã phường");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 107, 161, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 107, 170, -1));
 
         jLabel4.setText("Khu vực");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 158, 160, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 158, 170, -1));
 
         jLabel5.setText("Thu nhập");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 379, 157, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 379, 170, -1));
 
         jLabel6.setText("Từ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 402, 33, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 402, 35, -1));
 
         jLabel7.setText("Tới");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 428, 33, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 428, 35, -1));
 
         cbxhuyen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxhuyenActionPerformed(evt);
             }
         });
-        add(cbxhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 71, 160, 25));
+        add(cbxhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 71, 170, -1));
 
-        add(cbxxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 127, 160, -1));
+        add(cbxxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 127, 170, -1));
 
-        add(cbxkhuvuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 183, 160, -1));
+        add(cbxkhuvuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 183, 170, -1));
 
         txtthunhaptu.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        add(txtthunhaptu, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 399, 52, -1));
+        add(txtthunhaptu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 52, -1));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("000 VNĐ");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 50, 20));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 50, 20));
+        jLabel9.getAccessibleContext().setAccessibleName("000  VNĐ");
 
         bttimkiem.setText("Tìm kiếm");
         bttimkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -139,28 +142,23 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 bttimkiemActionPerformed(evt);
             }
         });
-        add(bttimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 160, -1));
+        add(bttimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 490, 170, -1));
 
         jLabel10.setText("Phân loại");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 270, 160, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 270, 170, -1));
 
-        add(cbxphanloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 290, 160, -1));
+        add(cbxphanloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 290, 170, -1));
 
         jLabel11.setText("Nguyên nhân");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 321, 161, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 321, 170, -1));
 
-        add(cbxnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 341, 160, -1));
-
-        jLabel12.setText("Dân tộc");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 214, 161, -1));
-
-        add(cbxdantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 239, 160, -1));
+        add(cbxnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 341, 170, -1));
 
         jLabel13.setText("Năm");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 466, 33, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 466, 35, -1));
 
         txtnam.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        add(txtnam, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 463, 52, -1));
+        add(txtnam, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 52, -1));
 
         tbdstimkiem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,7 +183,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbdstimkiem);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 0, 930, 570));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 0, 920, 570));
 
         btsua.setText("Chỉnh sửa");
         btsua.addActionListener(new java.awt.event.ActionListener() {
@@ -204,11 +202,17 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         add(btxoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 580, -1, -1));
 
         txtthunhaptoi.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        add(txtthunhaptoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 425, 52, -1));
+        add(txtthunhaptoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 52, -1));
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("000 VNĐ");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 50, 20));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 50, 20));
+        jLabel14.getAccessibleContext().setAccessibleName("000  VNĐ");
+
+        jLabel12.setText("Dân tộc");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 214, 170, -1));
+
+        add(cbxdantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 239, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxhuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxhuyenActionPerformed
@@ -220,16 +224,22 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     private void bttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemActionPerformed
         // TODO add your handling code here:
         try {
-            int tu = 0, toi = 0;
+            int tu = 0, toi = 0, nam = 0;
             if (!txtthunhaptu.getText().equals(""))
               tu  = Integer.parseInt(txtthunhaptu.getText());
             if (!txtthunhaptoi.getText().equals(""))
               toi  = Integer.parseInt(txtthunhaptoi.getText());
             
-            if (tu > toi || tu < 0 || toi < 0)
+            if (tu != 0 && toi != 0)
+            if (tu > toi || tu < 0 || toi < 0) {
                 JOptionPane.showMessageDialog(bttimkiem, "Hạn mức thu nhập không hợp lệ", "Thông báo lỗi", 2);
+                return;
+            }
+            
+             if (!txtnam.getText().equals(""))
+                nam  = Integer.parseInt(txtnam.getText());
         } catch(NumberFormatException | HeadlessException ex) {
-            JOptionPane.showMessageDialog(bttimkiem, "Hạn mức thu nhập không hợp lệ", "Thông báo lỗi", 2);
+            JOptionPane.showMessageDialog(bttimkiem, "Hạn mức thu nhập hoặc năm không hợp lệ", "Thông báo lỗi", 2);
             return;
         }
         
@@ -363,7 +373,8 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 "                         dbo.tbXa ON dbo.tbHoNgheo.IDXa = dbo.tbXa.IDXa INNER JOIN\n" +
                 "                         dbo.tbHuyen ON dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen INNER JOIN\n" +
                 "                         dbo.tbKhuVuc ON dbo.tbXa.IDKhuVuc = dbo.tbKhuVuc.IDKhuVuc\n" +
-               "WHERE " + ten + huyen + xa + khuvuc + dantoc + phanloai + nguyennhan + thunhap + nam + " 1=1";
+               "WHERE " + ten + huyen + xa + khuvuc + dantoc + phanloai + nguyennhan + thunhap + nam + " 1=1 " +
+                "ORDER BY dbo.tbHuyen.TenHuyen, dbo.tbXa.TenXa, dbo.tbHoNgheo.TenCH";
         
         UpdataTable.LoadData(sql, tbdstimkiem);
     }

@@ -26,14 +26,15 @@ public class FormCanBo extends javax.swing.JFrame {
     private static PnBaoCaoSoLieu pnBaoCaoSL;
     private static CanBo userInfo;
     private static PnThemHoNgheo pnThemHoNgheo;
-    private static PnTimKiemHoNgheo pnTimKiem;
+    private static PnTimKiemHoNgheo pnTimKiemHn;
+    private static PnTimKiemKhauNgheo pnTimKiemKn;
 
     public FormCanBo(CanBo userInfo) {
-        this.userInfo = userInfo;
+        FormCanBo.userInfo = userInfo;
         initComponents();
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         
         DKCanBo.layThongTinHeThong();
@@ -75,12 +76,12 @@ public class FormCanBo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuthemhn = new javax.swing.JMenu();
         menuThemHoNgheo = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menutimhn = new javax.swing.JMenuItem();
+        menutimkn = new javax.swing.JMenuItem();
+        menubcsl = new javax.swing.JMenu();
         menubaocaodanhsach = new javax.swing.JMenuItem();
         menubaocaodanhsach1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -151,7 +152,7 @@ public class FormCanBo extends javax.swing.JFrame {
         jLabel2.setText("Phần mềm quản lý hộ nghèo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 8, 200, -1));
 
-        jMenu1.setText("Quản lý");
+        menuthemhn.setText("Quản lý");
 
         menuThemHoNgheo.setText("Thêm hộ nghèo");
         menuThemHoNgheo.addActionListener(new java.awt.event.ActionListener() {
@@ -159,31 +160,31 @@ public class FormCanBo extends javax.swing.JFrame {
                 menuThemHoNgheoActionPerformed(evt);
             }
         });
-        jMenu1.add(menuThemHoNgheo);
+        menuthemhn.add(menuThemHoNgheo);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuthemhn);
 
         jMenu4.setText("Tìm kiếm");
 
-        jMenuItem2.setText("Tìm kiếm hộ nghèo");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menutimhn.setText("Tìm kiếm hộ nghèo");
+        menutimhn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menutimhnActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem2);
+        jMenu4.add(menutimhn);
 
-        jMenuItem4.setText("Tìm kiếm khẩu nghèo");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menutimkn.setText("Tìm kiếm khẩu nghèo");
+        menutimkn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menutimknActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        jMenu4.add(menutimkn);
 
         jMenuBar1.add(jMenu4);
 
-        jMenu2.setText("Báo cáo");
+        menubcsl.setText("Báo cáo");
 
         menubaocaodanhsach.setText("Báo cáo danh sách");
         menubaocaodanhsach.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +192,7 @@ public class FormCanBo extends javax.swing.JFrame {
                 menubaocaodanhsachActionPerformed(evt);
             }
         });
-        jMenu2.add(menubaocaodanhsach);
+        menubcsl.add(menubaocaodanhsach);
 
         menubaocaodanhsach1.setText("Báo cáo số liệu");
         menubaocaodanhsach1.addActionListener(new java.awt.event.ActionListener() {
@@ -199,9 +200,9 @@ public class FormCanBo extends javax.swing.JFrame {
                 menubaocaodanhsach1ActionPerformed(evt);
             }
         });
-        jMenu2.add(menubaocaodanhsach1);
+        menubcsl.add(menubaocaodanhsach1);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menubcsl);
 
         jMenu5.setText("Quản trị");
 
@@ -260,22 +261,22 @@ public class FormCanBo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menutimhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menutimhnActionPerformed
         // TODO add your handling code here:
         for (Component frmChild : pnNoiDung.getComponents()) {
             frmChild.setVisible(false);
         }
         
-        if (pnTimKiem == null) {
-            pnTimKiem = new PnTimKiemHoNgheo(userInfo);
-            pnNoiDung.add(pnTimKiem);
-            pnTimKiem.setVisible(true);
+        if (pnTimKiemHn == null) {
+            pnTimKiemHn = new PnTimKiemHoNgheo(userInfo);
+            pnNoiDung.add(pnTimKiemHn);
+            pnTimKiemHn.setVisible(true);
             pnNoiDung.validate();
         } else {
-            pnTimKiem.setVisible(true);
+            pnTimKiemHn.setVisible(true);
             pnNoiDung.validate();
         } 
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menutimhnActionPerformed
 
     private void menubaocaodanhsachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menubaocaodanhsachActionPerformed
         // TODO add your handling code here:
@@ -300,20 +301,33 @@ public class FormCanBo extends javax.swing.JFrame {
             frmChild.setVisible(false);
         }
         
-        if (pnTimKiem == null) {
-            pnTimKiem = new PnTimKiemHoNgheo(userInfo);
-            pnNoiDung.add(pnTimKiem);
-            pnTimKiem.setVisible(true);
+        if (pnTimKiemHn == null) {
+            pnTimKiemHn = new PnTimKiemHoNgheo(userInfo);
+            pnNoiDung.add(pnTimKiemHn);
+            pnTimKiemHn.setVisible(true);
             pnNoiDung.validate();
         } else {
-            pnTimKiem.setVisible(true);
+            pnTimKiemHn.setVisible(true);
             pnNoiDung.validate();
         } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menutimknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menutimknActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+          for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+
+        if (pnTimKiemKn == null) {
+            pnTimKiemKn = new PnTimKiemKhauNgheo(userInfo);
+            pnNoiDung.add(pnTimKiemKn);
+            pnTimKiemKn.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnTimKiemKn.setVisible(true);
+            pnNoiDung.validate();
+        }
+    }//GEN-LAST:event_menutimknActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -437,18 +451,18 @@ public class FormCanBo extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem menuThemHoNgheo;
     private javax.swing.JMenuItem menubaocaodanhsach;
     private javax.swing.JMenuItem menubaocaodanhsach1;
+    private javax.swing.JMenu menubcsl;
+    private javax.swing.JMenu menuthemhn;
+    private javax.swing.JMenuItem menutimhn;
+    private javax.swing.JMenuItem menutimkn;
     private javax.swing.JPanel pnNoiDung;
     // End of variables declaration//GEN-END:variables
 }
