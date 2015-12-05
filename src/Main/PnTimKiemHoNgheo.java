@@ -81,6 +81,8 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         txtnam = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdstimkiem = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jSeparator1.setMinimumSize(new java.awt.Dimension(8, 604));
 
@@ -136,7 +138,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
             },
             new String [] {
-                "IDHoNgheo", "TenCH", "TenHuyen", "TenXa", "TenPL", "TenNN", "TenKhuVuc", "TenDT"
+                "Mã hộ nghèo", "Tên chủ hộ", "Huyện", "Xã", "Phân loại", "Nguyên nhân", "Khu vực", "Dân tộc"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -148,6 +150,10 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tbdstimkiem);
+
+        jButton1.setText("Chỉnh sửa");
+
+        jButton2.setText("Xóa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -207,8 +213,13 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                         .addGap(10, 10, 10)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,8 +273,12 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 .addComponent(bttimkiem)
                 .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -354,7 +369,8 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         else
             nam = "dbo.tbDanhSachHN.NamNgheo = " + namNgheo + " AND ";
             
-        sql = "SELECT       dbo.tbHoNgheo.IDHoNgheo,  dbo.tbHoNgheo.TenCH, dbo.tbHuyen.TenHuyen, dbo.tbXa.TenXa, dbo.tbPhanLoai.TenPL, dbo.tbNguyenNhan.TenNN, dbo.tbKhuVuc.TenKhuVuc, dbo.tbDanToc.TenDT\n" +
+        sql = "SELECT       dbo.tbHoNgheo.IDHoNgheo AS 'Mã hộ nghèo',  dbo.tbHoNgheo.TenCH AS 'Tên chủ hộ', dbo.tbHuyen.TenHuyen AS 'Huyện', dbo.tbXa.TenXa AS 'Xã'"+
+                ", dbo.tbPhanLoai.TenPL AS 'Phân loại', dbo.tbNguyenNhan.TenNN AS 'Nguyên nhân', dbo.tbKhuVuc.TenKhuVuc AS 'Khu vực', dbo.tbDanToc.TenDT AS 'Dân tộc'\n" +
 "FROM            dbo.tbDanhSachHN INNER JOIN\n" +
 "                         dbo.tbHoNgheo ON dbo.tbDanhSachHN.IDHoNgheo = dbo.tbHoNgheo.IDHoNgheo INNER JOIN\n" +
 "                         dbo.tbDanToc ON dbo.tbHoNgheo.IDDanToc = dbo.tbDanToc.IDDanToc INNER JOIN\n" +
@@ -425,6 +441,8 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbxnguyennhan;
     private javax.swing.JComboBox<String> cbxphanloai;
     private javax.swing.JComboBox<String> cbxxa;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
