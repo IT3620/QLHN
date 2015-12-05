@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author thong
  */
-public class PnThemHoNgheo extends javax.swing.JPanel {
+public final class PnThemHoNgheo extends javax.swing.JPanel {
 
     /**
      * Creates new form PnThemHoNgheo
@@ -529,7 +529,12 @@ public class PnThemHoNgheo extends javax.swing.JPanel {
         try {
             int idHoNgheo = Integer.parseInt(txtmahn.getText());
             HoNgheo hoNgheo = DKCanBo.layThongTinHN(idHoNgheo);
+            if (hoNgheo == null) {
+                JOptionPane.showMessageDialog(this, "Mã hộ nghèo không tồn tại", "Thông báo lỗi", 2);
+                xoaHienThi();
+            }
             hienThiHoNgheo(hoNgheo, idHoNgheo);
+            
             themMoi = false;
             btthemhn.setText("Thêm Cũ");
         } catch (Exception ex) {
