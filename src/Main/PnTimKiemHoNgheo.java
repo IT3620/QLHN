@@ -29,7 +29,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
      */
     private static CanBo userInfo;
     public PnTimKiemHoNgheo(CanBo userInfo) {
-        this.userInfo = userInfo;
+        PnTimKiemHoNgheo.userInfo = userInfo;
         initComponents();
         loadComboBox();
         loadDanhSachHuyen();
@@ -361,7 +361,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         }
             
         DKCanBo.xoaKhoiDanhSachHN(idHoNgheo, nam);
-        bttimkiem.doClick();
+        tbdstimkiemMouseClicked(null);
         btsua.setEnabled(false);
         btxoa.setEnabled(false);
     }//GEN-LAST:event_btxoaActionPerformed
