@@ -201,6 +201,7 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
     
     public void loadDanhSachHuyen() {
         ArrayList<DanhMuc> dsHuyen = DKCanBo.layDanhSachHuyen();
+        cbxhuyen.removeAll();
         if (dsHuyen != null)
         for (DanhMuc huyen : dsHuyen)
             cbxhuyen.addItem(huyen.id + "." + huyen.ten);
@@ -208,6 +209,7 @@ public class PnTimKiemHoNgheo extends javax.swing.JPanel {
 
     public void loadDanhSachXa(int huyen) {
         ArrayList<DanhMuc> dsXa = DKCanBo.layDanhSachXa(huyen);
+        cbxxa.removeAll();
         if (dsXa != null)
             for (DanhMuc xa : dsXa) 
                 cbxxa.addItem(xa.id + "." + xa.ten);
