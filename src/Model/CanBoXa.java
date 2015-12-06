@@ -40,4 +40,10 @@ public class CanBoXa extends CanBo {
     public HoNgheo layThongTinHN(int idHoNgheo) {
        return CoSoDuLieu.layThongTinHN(idHoNgheo, getCapQL(), diaBanQL);
     }
+
+    @Override
+    public String layTruyVanBaoCaoSL(int loai, int nam, int giatri) {
+        String sql = "";
+        return sql;
+    }
 }

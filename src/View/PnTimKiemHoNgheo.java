@@ -191,7 +191,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 btsuaActionPerformed(evt);
             }
         });
-        add(btsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, -1, -1));
+        add(btsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 580, -1, -1));
 
         btxoa.setText("Xóa");
         btxoa.addActionListener(new java.awt.event.ActionListener() {

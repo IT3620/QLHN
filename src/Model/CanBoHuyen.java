@@ -19,5 +19,10 @@ public class CanBoHuyen extends CanBo {
     public HoNgheo layThongTinHN(int idHoNgheo) {
        return CoSoDuLieu.layThongTinHN(idHoNgheo, getCapQL(), diaBanQL);
     }
+
+    @Override
+    public String layTruyVanBaoCaoSL(int loai, int nam, int giatri) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

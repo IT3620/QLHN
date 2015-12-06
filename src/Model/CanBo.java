@@ -60,4 +60,5 @@ public abstract class CanBo {
     }
     
     public abstract HoNgheo layThongTinHN(int idHoNgheo);
+    public abstract String layTruyVanBaoCaoSL(int loai, int nam, int giatri);
 }

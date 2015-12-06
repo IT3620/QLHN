@@ -175,19 +175,19 @@ public class CoSoDuLieu {
             String sql;
             switch (cap) {
                 case 3:
-                    sql = "SELECT TenCH, Xom, IDXa, IDDanToc, IDPhanLoai, ThuNhapTB, IDNuoc, IDnguyenNhan, TrangThai, IDNhaO "
+                    sql = "SELECT TenCH, Xom, dbo.tbXa.IDXa, IDDanToc, IDPhanLoai, ThuNhapTB, IDNuoc, IDnguyenNhan, TrangThai, IDNhaO "
                             + "FROM dbo.tbHoNgheo, dbo.tbTinh, dbo.tbHuyen, dbo.tbXa "
                             + "WHERE dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen AND dbo.tbTinh.IDTinh = dbo.tbHuyen.IDTinh AND dbo.tbXa.IDXa = " + maDiaBan
                             + " AND dbo.tbHoNgheo.IDHoNgheo = " + idHoNgheo;
                     break;
                 case 2:
-                    sql = "SELECT TenCH, Xom, IDXa, IDDanToc, IDPhanLoai, ThuNhapTB, IDNuoc, IDnguyenNhan, TrangThai, IDNhaO "
+                    sql = "SELECT TenCH, Xom, dbo.tbXa.IDXa, IDDanToc, IDPhanLoai, ThuNhapTB, IDNuoc, IDnguyenNhan, TrangThai, IDNhaO "
                             + "FROM dbo.tbHoNgheo, dbo.tbTinh, dbo.tbHuyen, dbo.tbXa "
                             + "WHERE dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen AND dbo.tbTinh.IDTinh = dbo.tbHuyen.IDTinh AND dbo.tbHuyen.IDHuyen = " + maDiaBan
                             + " AND dbo.tbHoNgheo.IDHoNgheo = " + idHoNgheo;
                     break;
                 default:
-                    sql = "SELECT TenCH, Xom, IDXa, IDDanToc, IDPhanLoai, ThuNhapTB, IDNuoc, IDnguyenNhan, TrangThai, IDNhaO "
+                    sql = "SELECT TenCH, Xom, dbo.tbXaIDXa, IDDanToc, IDPhanLoai, ThuNhapTB, IDNuoc, IDnguyenNhan, TrangThai, IDNhaO "
                             + "FROM dbo.tbHoNgheo, dbo.tbTinh, dbo.tbHuyen, dbo.tbXa "
                             + "WHERE dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen AND dbo.tbTinh.IDTinh = dbo.tbHuyen.IDTinh AND dbo.tbTinh.IDTinh = " + maDiaBan
                             + " AND dbo.tbHoNgheo.IDHoNgheo = " + idHoNgheo;

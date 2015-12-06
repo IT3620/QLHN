@@ -1,50 +1,25 @@
 package View;
 
+import Control.QLCanBo;
 import Model.CanBo;
 import Model.CoSoDuLieu;
+import Model.DanhMuc;
+import Model.HeThong;
 
 
 public class PnBaoCaoSoLieu extends javax.swing.JPanel {
     private static CanBo canbo;
-    private String where,showhuyen,showxa;
     public PnBaoCaoSoLieu(CanBo canbo) {
         PnBaoCaoSoLieu.canbo = canbo;
         initComponents();
-        loadcombox();
-    }
-    public void loadcombox()
-    {
-        String[] menu = {"Tổng hợp số liệu hộ nghèo","Tổng hợp số liệu theo mức thu nhập",
-                "Tổng hợp số liệu theo khu vực","Tổng hợp số liệu theo dân tộc",
-                "Tổng hợp số liệu theo tình hình nhà ở","Tổng hợp số liệu theo đối tượng",
-                "Tổng hợp số liệu theo đối tượng","Tổn hợp số liệu theo nguyên nhân nghèo",
-                "Tổng hợp số liệu theo nguyện vọng"};
-          for (int i=0; i<menu.length;i++)  
-          {
-              //cbxmenu.addItem(menu[i]);
-          }
-        for(int i=2015; i>= 1980 ;i-- )
-        {
-            //cbxnam.addItem(i);
-        }       
-    }
-    public void loadDieuKienLoadDiaBan()
-    {
-        if(canbo.getCapQL()==1){
-            where = "";
-        }
         
-        else if(canbo.getCapQL()==2)
-            where = "dbo.tbHuyen.IDHuyen = "+canbo.getDiaBanQL();
-        else where = "dbo.tbXa.IDxa = "+canbo.getDiaBanQL();
+        cbxgiatri.setEnabled(false);
+        for (int i = HeThong.namNgheo; i>2010; i--) {
+            cbxnam.addItem(""+i);
+        }
     }
-    public void loaddulieu(String diaban)
-    {
-        String sql="";
-//        if(cbxmenu.getSelectedIndex()==0)
-//            sql="SELECT ";
-        CoSoDuLieu.LoadData(sql, tbbaocaosl);
-    }
+    
+    
     
     
     @SuppressWarnings("unchecked")
@@ -53,8 +28,15 @@ public class PnBaoCaoSoLieu extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbbaocaosl = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        txttieude = new javax.swing.JLabel();
+        cbxloaibc = new javax.swing.JComboBox<>();
+        cbxnam = new javax.swing.JComboBox<>();
+        cbxgiatri = new javax.swing.JComboBox<>();
+        btxuatbc = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tbbaocaosl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tbbaocaosl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -68,38 +50,97 @@ public class PnBaoCaoSoLieu extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbbaocaosl);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Bảng báo cáo số liệu");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 1109, 362));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(38, 38, 38))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(jLabel3)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        txttieude.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txttieude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txttieude.setText("Bảng báo cáo số liệu");
+        add(txttieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 92, 1109, -1));
+
+        cbxloaibc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1.Tổng hợp số liệu hộ nghèo", "2.Tổng hợp số liệu theo đối tượng", "3.Tổng hợp số liệu theo khu vực", "4.Tổng hợp số liệu theo dân tộc", "5.Tổng hợp số liệu theo tình hình nhà ở", "6.Tổng hợp số liệu hộ nghèo theo đối tượng", "7.Tổng hợp số liệu hộ nghèo theo nguyên nhân nghèo", "8.Tổng hợp số liệu hộ nghèo và cận nghèo theo năm" }));
+        cbxloaibc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxloaibcActionPerformed(evt);
+            }
+        });
+        add(cbxloaibc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 383, -1));
+
+        add(cbxnam, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 12, 65, -1));
+
+        add(cbxgiatri, new org.netbeans.lib.awtextra.AbsoluteConstraints(529, 12, 204, -1));
+
+        btxuatbc.setText("Xuất báo cáo");
+        btxuatbc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btxuatbcActionPerformed(evt);
+            }
+        });
+        add(btxuatbc, new org.netbeans.lib.awtextra.AbsoluteConstraints(989, 11, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbxloaibcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxloaibcActionPerformed
+        if (cbxloaibc.getSelectedIndex() != 0 || cbxloaibc.getSelectedIndex() != 8)
+            cbxgiatri.setVisible(true);
+        switch (cbxloaibc.getSelectedIndex() + 1) {
+            case 1:
+            case 8:
+                cbxgiatri.setVisible(false);
+                break;
+            case 2:
+                cbxgiatri.removeAllItems();
+                cbxgiatri.addItem("0.Tất cả");
+                for (DanhMuc i : HeThong.dmDoiTuong)
+                    cbxgiatri.addItem(i.ten);
+                break;
+            case 3:
+                cbxgiatri.removeAllItems();
+                cbxgiatri.addItem("0.Tất cả");
+                for (DanhMuc i : HeThong.dmKhuVuc)
+                    cbxgiatri.addItem(i.ten);
+                break;
+            case 4:
+                cbxgiatri.removeAllItems();
+                cbxgiatri.addItem("0.Tất cả");
+                for (DanhMuc i : HeThong.dmDanToc)
+                    cbxgiatri.addItem(i.ten);
+                break;
+            case 5:
+                cbxgiatri.removeAllItems();
+                cbxgiatri.addItem("0.Tất cả");
+                for (DanhMuc i : HeThong.dmNhaO)
+                    cbxgiatri.addItem(i.ten);
+                break;
+            case 6:
+                cbxgiatri.removeAllItems();
+                cbxgiatri.addItem("0.Tất cả");
+                for (DanhMuc i : HeThong.dmDoiTuong)
+                    cbxgiatri.addItem(i.ten);
+                break;
+            case 7:
+                cbxgiatri.removeAllItems();
+                cbxgiatri.addItem("0.Tất cả");
+                for (DanhMuc i : HeThong.dmNguyenNhan)
+                    cbxgiatri.addItem(i.ten);
+                break;
+        }
+    }//GEN-LAST:event_cbxloaibcActionPerformed
+
+    private void btxuatbcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxuatbcActionPerformed
+        int loai = cbxloaibc.getSelectedIndex() + 1;
+        int nam = Integer.parseInt(cbxnam.getSelectedItem().toString());
+        int giatri = Integer.parseInt(cbxgiatri.getSelectedItem().toString().split(".")[0]);
+        String sql = canbo.layTruyVanBaoCaoSL(loai, nam, giatri);
+        QLCanBo.LoadData(sql, tbbaocaosl);
+    }//GEN-LAST:event_btxuatbcActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btxuatbc;
+    private javax.swing.JComboBox<String> cbxgiatri;
+    private javax.swing.JComboBox<String> cbxloaibc;
+    private javax.swing.JComboBox<String> cbxnam;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbbaocaosl;
+    private javax.swing.JLabel txttieude;
     // End of variables declaration//GEN-END:variables
 }

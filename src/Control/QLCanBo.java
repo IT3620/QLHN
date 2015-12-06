@@ -41,4 +41,8 @@ public class QLCanBo {
     public static void LoadData(String sql, JTable tb) {
         CoSoDuLieu.LoadData(sql, tb);
     }
+
+    public static String xuatBaoCaoSLQuerry(int loai, int nam, int giatri) {
+        return null;
+    }
 }

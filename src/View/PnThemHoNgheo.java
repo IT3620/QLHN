@@ -119,6 +119,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         tbdanhsachkn = new javax.swing.JTable();
         lbmahn = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add(cbxdantockn, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 305, 125, -1));
@@ -157,8 +158,8 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
 
         add(cbxnhao, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 125, 128, -1));
 
-        lbnguyennhan.setText("Nguyên nhân nghèo");
-        add(lbnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 128, -1, -1));
+        lbnguyennhan.setText("Nguyên nhân");
+        add(lbnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 128, 80, -1));
 
         add(cbxnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 125, 220, -1));
 
@@ -183,8 +184,10 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         add(lbthunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 90, 97, -1));
 
         txtnamngheo.setEditable(false);
-        txtnamngheo.setBackground(new java.awt.Color(204, 204, 204));
+        txtnamngheo.setBackground(new java.awt.Color(0, 0, 0));
         txtnamngheo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtnamngheo.setForeground(new java.awt.Color(255, 255, 255));
+        txtnamngheo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtnamngheo.setEnabled(false);
         txtnamngheo.setFocusable(false);
         add(txtnamngheo, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 179, 128, -1));
@@ -219,8 +222,10 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         add(lbhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 50, 52, -1));
 
         txtxa.setEditable(false);
-        txtxa.setBackground(new java.awt.Color(204, 204, 204));
+        txtxa.setBackground(new java.awt.Color(0, 0, 0));
         txtxa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtxa.setForeground(new java.awt.Color(255, 255, 255));
+        txtxa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtxa.setEnabled(false);
         txtxa.setFocusable(false);
         add(txtxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 49, 108, -1));
@@ -230,8 +235,10 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         add(lbxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 52, 32, -1));
 
         txthuyen.setEditable(false);
-        txthuyen.setBackground(new java.awt.Color(204, 204, 204));
+        txthuyen.setBackground(new java.awt.Color(0, 0, 0));
         txthuyen.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txthuyen.setForeground(new java.awt.Color(255, 255, 255));
+        txthuyen.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txthuyen.setEnabled(false);
         txthuyen.setFocusable(false);
         add(txthuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, 139, -1));
@@ -253,7 +260,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                 lbhuyActionPerformed(evt);
             }
         });
-        add(lbhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, 103, -1));
+        add(lbhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 562, 110, -1));
         add(txtnamsinhkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 267, 100, -1));
 
         lbtench.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -283,7 +290,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                 btchinhsuaActionPerformed(evt);
             }
         });
-        add(btchinhsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 343, 113, -1));
+        add(btchinhsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 343, 160, -1));
 
         lbxoakn.setText("Xóa");
         lbxoakn.addActionListener(new java.awt.event.ActionListener() {
@@ -291,7 +298,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                 lbxoaknActionPerformed(evt);
             }
         });
-        add(lbxoakn, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 343, 97, -1));
+        add(lbxoakn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 343, 160, -1));
 
         btthemhn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btthemhn.setText("Thêm");
@@ -300,7 +307,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                 btthemhnActionPerformed(evt);
             }
         });
-        add(btthemhn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 562, 100, -1));
+        add(btthemhn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 562, 110, -1));
 
         btthemkn.setText("Thêm khẩu nghèo");
         btthemkn.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +315,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                 btthemknActionPerformed(evt);
             }
         });
-        add(btthemkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 343, 129, -1));
+        add(btthemkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 343, 160, -1));
 
         lbdoituongcs.setText("Đối tượng chính sách");
         add(lbdoituongcs, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 308, 126, -1));
@@ -484,8 +491,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                     if (idHoNgheo >= 0) {
                         if (((CanBoXa)canbo).themVaoDanhSachHN(idHoNgheo, HeThong.namNgheo)) {
                             JOptionPane.showMessageDialog(this, "Đã thêm thành công hộ nghèo, mã hộ nghèo là:  " + idHoNgheo, "Thêm hộ nghèo thành công", 1);
-                            txtmahn.setText("" + idHoNgheo);
-                            listkn.clear();
+                            xoaHienThi2();
                         }
                     }
                 } else {
@@ -571,6 +577,33 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         cbxdantocch.setSelectedIndex(0);
         txtthunhap.setText("");
         cbxphanloai.setSelectedIndex(0);
+        cbxnhao.setSelectedIndex(0);
+        cbxnuoc.setSelectedIndex(0);
+        cbxnguyennhan.setSelectedIndex(0);
+        txtnamngheo.setText("");
+        cbDaCapThe.setSelected(false);
+
+        listkn.clear();
+        xemDanhSachKN();
+    }
+    
+    private void xoaHienThi2() {
+        txthotenkn.setText("");
+        cbxquanhe.setSelectedIndex(0);
+        cbxgioitinh.setSelectedIndex(0);
+        txtnamsinhkn.setText("");
+        cbxdantockn.setSelectedIndex(0);
+        cbxnghenghiep.setSelectedIndex(0);
+        cbxdoituong.setSelectedIndex(0);
+
+        txtmahn.setText("");
+        txthotench.setText("");
+        txtxom.setText("");
+        
+       
+        cbxdantocch.setSelectedIndex(0);
+        txtthunhap.setText("");
+        
         cbxnhao.setSelectedIndex(0);
         cbxnuoc.setSelectedIndex(0);
         cbxnguyennhan.setSelectedIndex(0);

@@ -346,6 +346,8 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
         getContentPane().add(lbxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 52, 32, -1));
         getContentPane().add(txtxom, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 49, 63, -1));
 
+        getAccessibleContext().setAccessibleParent(this);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
