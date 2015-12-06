@@ -1,5 +1,5 @@
 
-package Entity;
+package Model;
 
 public class CanBo {
     private String idCanBo;

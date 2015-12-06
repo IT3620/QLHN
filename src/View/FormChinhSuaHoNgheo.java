@@ -1,12 +1,12 @@
-package Main;
+package View;
 
-import Entity.DanhMuc;
-import Entity.KhauNgheo;
-import Entity.CanBo;
-import Entity.HeThong;
-import Entity.DiaBan;
+import Model.DanhMuc;
+import Model.KhauNgheo;
+import Model.CanBo;
+import Model.HeThong;
+import Model.DiaBan;
 import Control.DKCanBo;
-import Entity.HoNgheo;
+import Model.HoNgheo;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.Dimension;
 import java.awt.HeadlessException;

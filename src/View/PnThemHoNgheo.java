@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package View;
 
-import Entity.DanhMuc;
-import Entity.KhauNgheo;
-import Entity.CanBo;
-import Entity.HeThong;
-import Entity.DiaBan;
+import Model.DanhMuc;
+import Model.KhauNgheo;
+import Model.CanBo;
+import Model.HeThong;
+import Model.DiaBan;
 import Control.DKCanBo;
-import Entity.HoNgheo;
+import Model.HoNgheo;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.Iterator;

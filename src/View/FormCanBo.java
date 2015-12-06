@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package View;
 
 import Control.DKCanBo;
-import Entity.CanBo;
+import Model.CanBo;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -93,7 +93,6 @@ public class FormCanBo extends javax.swing.JFrame {
         setTitle("Phần mềm quản lý hộ nghèo - Nhóm 2");
         setBackground(new java.awt.Color(102, 102, 102));
         setForeground(new java.awt.Color(153, 153, 153));
-        setMaximumSize(new java.awt.Dimension(1920, 1280));
         setMinimumSize(new java.awt.Dimension(1044, 668));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

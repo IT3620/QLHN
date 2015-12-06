@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package View;
 
 import Control.DKCanBo;
 import Control.DKCanBo;
-import Entity.CanBo;
-import Entity.DanhMuc;
-import Entity.DiaBanInt;
-import Entity.HeThong;
+import Model.CanBo;
+import Model.DanhMuc;
+import Model.DiaBanInt;
+import Model.HeThong;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;

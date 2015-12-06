@@ -1,12 +1,12 @@
 
 package Control;
 
-import Entity.DanhMuc;
-import Entity.HeThong;
-import Entity.DiaBan;
-import Entity.DiaBanInt;
-import Entity.HoNgheo;
-import Entity.KhauNgheo;
+import Model.DanhMuc;
+import Model.HeThong;
+import Model.DiaBan;
+import Model.DiaBanInt;
+import Model.HoNgheo;
+import Model.KhauNgheo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

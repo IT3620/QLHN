@@ -1,9 +1,9 @@
 
-package Main;
+package View;
 import Control.DKCanBo;
-import Entity.CanBo;
-import Entity.DanhMuc;
-import Entity.DiaBanInt;
+import Model.CanBo;
+import Model.DanhMuc;
+import Model.DiaBanInt;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -99,7 +99,7 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
             this.txtbaocaods.setText("BÁO CÁO DANH SÁCH HỘ NGHÈO XÃ");
         }
                 DKCanBo.LoadData(sql, tbbaocaodanhsach);
-                this.txtnam.setText(""+Entity.HeThong.namNgheo);
+                this.txtnam.setText(""+Model.HeThong.namNgheo);
     }
   
     public void ShowBaoCao()

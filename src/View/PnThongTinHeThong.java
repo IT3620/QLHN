@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package View;
 
 import Control.DKCanBo;
-import Entity.CanBo;
-import Entity.DiaBan;
-import Entity.HeThong;
+import Model.CanBo;
+import Model.DiaBan;
+import Model.HeThong;
 
 /**
  *
