@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -65,7 +66,25 @@ public class CoSoDuLieu {
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
-            tb.setModel((DbUtils.resultSetToTableModel(rs)));
+            ResultSetMetaData rsmd = rs.getMetaData();
+            
+            int col = rsmd.getColumnCount();
+            Vector cols = new Vector();
+            for (int i=1; i<= col; i++) {
+                cols.add(rsmd.getColumnName(i));
+            }
+            
+            Vector data = new Vector();
+            while (rs.next()) {
+                Vector row = new Vector();
+                for (int i=1; i<= col; i++) {
+                    row.add(rs.getObject(i));
+                }
+                data.add(row);
+            }
+            
+            tb.setModel(new MyTableModel(data, cols));
+            //tb.setModel((DbUtils.resultSetToTableModel(rs)));
             // ngay chỗ này là nạp dữ liệu lên bảng mà mình truyền vào
         } catch (Exception e) {
         }
