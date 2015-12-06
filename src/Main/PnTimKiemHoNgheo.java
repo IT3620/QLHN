@@ -300,6 +300,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         int index = tbdstimkiem.getSelectedRow();
         if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
             JOptionPane.showMessageDialog(bttimkiem, "Bạn không có quyền chỉnh sửa hộ nghèo", "Thông báo lỗi", 2);
+            return;
         }
         if (index < 0)
             return;
