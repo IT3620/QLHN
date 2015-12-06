@@ -49,25 +49,25 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
     private void initComponents() {
 
         txthoten = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lbhuyen = new javax.swing.JLabel();
         cbxhuyen = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        lbxa = new javax.swing.JLabel();
         cbxxa = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
+        lbnamsinh = new javax.swing.JLabel();
         txtnamsinhtu = new javax.swing.JTextField();
         txtnamsinhtoi = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lbdautru = new javax.swing.JLabel();
         bttim = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbquanhe = new javax.swing.JLabel();
+        lbhoten = new javax.swing.JLabel();
         cbxquanhe = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        lbdantoc = new javax.swing.JLabel();
         cbxdantoc = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
+        lbdoituong = new javax.swing.JLabel();
         cbxdoituong = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        lbnghe = new javax.swing.JLabel();
         cbxnghe = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
+        lbnamngheo = new javax.swing.JLabel();
         txtnam = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbdskn = new javax.swing.JTable();
@@ -77,8 +77,8 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
         txthoten.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txthoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 30, 170, -1));
 
-        jLabel2.setText("Quận huyện");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 60, 170, -1));
+        lbhuyen.setText("Quận huyện");
+        add(lbhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 60, 170, -1));
 
         cbxhuyen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,13 +87,13 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
         });
         add(cbxhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 80, 170, -1));
 
-        jLabel3.setText("Xã phường");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 120, 170, -1));
+        lbxa.setText("Xã phường");
+        add(lbxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 120, 170, -1));
 
         add(cbxxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 140, 170, -1));
 
-        jLabel16.setText("Năm sinh");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 410, 170, -1));
+        lbnamsinh.setText("Năm sinh");
+        add(lbnamsinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 410, 170, -1));
 
         txtnamsinhtu.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txtnamsinhtu, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 430, 70, -1));
@@ -101,10 +101,10 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
         txtnamsinhtoi.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txtnamsinhtoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 70, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("-");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 30, 20));
+        lbdautru.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbdautru.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbdautru.setText("-");
+        add(lbdautru, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 30, 20));
 
         bttim.setText("Tìm kiếm");
         bttim.addActionListener(new java.awt.event.ActionListener() {
@@ -114,30 +114,30 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
         });
         add(bttim, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 540, 170, -1));
 
-        jLabel5.setText("Quan hệ với chủ hộ");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 170, 170, -1));
+        lbquanhe.setText("Quan hệ với chủ hộ");
+        add(lbquanhe, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 170, 170, -1));
 
-        jLabel6.setText("Họ tên");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 170, -1));
+        lbhoten.setText("Họ tên");
+        add(lbhoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 170, -1));
         add(cbxquanhe, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 190, 170, -1));
 
-        jLabel1.setText("Dân tộc");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 250, 170, -1));
+        lbdantoc.setText("Dân tộc");
+        add(lbdantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 250, 170, -1));
 
         add(cbxdantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 270, 170, -1));
 
-        jLabel7.setText("Đối tượng");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 300, 170, -1));
+        lbdoituong.setText("Đối tượng");
+        add(lbdoituong, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 300, 170, -1));
 
         add(cbxdoituong, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 320, 170, -1));
 
-        jLabel8.setText("Nghề nghiệp");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 350, 170, -1));
+        lbnghe.setText("Nghề nghiệp");
+        add(lbnghe, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 350, 170, -1));
 
         add(cbxnghe, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 370, 170, -1));
 
-        jLabel9.setText("Năm");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 470, 50, -1));
+        lbnamngheo.setText("Năm");
+        add(lbnamngheo, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 470, 50, -1));
 
         txtnam.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txtnam, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 70, -1));
@@ -264,17 +264,17 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbxnghe;
     private javax.swing.JComboBox<String> cbxquanhe;
     private javax.swing.JComboBox<String> cbxxa;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbdantoc;
+    private javax.swing.JLabel lbdautru;
+    private javax.swing.JLabel lbdoituong;
+    private javax.swing.JLabel lbhoten;
+    private javax.swing.JLabel lbhuyen;
+    private javax.swing.JLabel lbnamngheo;
+    private javax.swing.JLabel lbnamsinh;
+    private javax.swing.JLabel lbnghe;
+    private javax.swing.JLabel lbquanhe;
+    private javax.swing.JLabel lbxa;
     private javax.swing.JTable tbdskn;
     private javax.swing.JTextField txthoten;
     private javax.swing.JTextField txtnam;

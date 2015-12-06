@@ -18,7 +18,7 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lbtench">
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#xea;n ch&#x1ee7; h&#x1ed9;"/>
       </Properties>
@@ -38,7 +38,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lbhuyen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Qu&#x1ead;n huy&#x1ec7;n"/>
       </Properties>
@@ -48,7 +48,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lbxa">
       <Properties>
         <Property name="text" type="java.lang.String" value="X&#xe3; ph&#x1b0;&#x1edd;ng"/>
       </Properties>
@@ -58,7 +58,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lbkhuvuc">
       <Properties>
         <Property name="text" type="java.lang.String" value="Khu v&#x1ef1;c"/>
       </Properties>
@@ -68,7 +68,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lbthunhap">
       <Properties>
         <Property name="text" type="java.lang.String" value="Thu nh&#x1ead;p"/>
       </Properties>
@@ -78,7 +78,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lbtttu">
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#x1eeb;"/>
       </Properties>
@@ -88,7 +88,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lbtttoi">
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#x1edb;i"/>
       </Properties>
@@ -156,7 +156,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="lbdvtu">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="000 VN&#x110;"/>
@@ -183,7 +183,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="lbphanloai">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ph&#xe2;n lo&#x1ea1;i"/>
       </Properties>
@@ -208,7 +208,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class="javax.swing.JLabel" name="lbnguyennhan">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nguy&#xea;n nh&#xe2;n"/>
       </Properties>
@@ -233,7 +233,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel13">
+    <Component class="javax.swing.JLabel" name="lbnam">
       <Properties>
         <Property name="text" type="java.lang.String" value="N&#x103;m"/>
       </Properties>
@@ -324,7 +324,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
+    <Component class="javax.swing.JLabel" name="lbdvtoi">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="000 VN&#x110;"/>
@@ -338,7 +338,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel12">
+    <Component class="javax.swing.JLabel" name="lbdantoc">
       <Properties>
         <Property name="text" type="java.lang.String" value="D&#xe2;n t&#x1ed9;c"/>
       </Properties>

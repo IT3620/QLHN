@@ -62,60 +62,60 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbtench = new javax.swing.JLabel();
         txtchuho = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbhuyen = new javax.swing.JLabel();
+        lbxa = new javax.swing.JLabel();
+        lbkhuvuc = new javax.swing.JLabel();
+        lbthunhap = new javax.swing.JLabel();
+        lbtttu = new javax.swing.JLabel();
+        lbtttoi = new javax.swing.JLabel();
         cbxhuyen = new javax.swing.JComboBox<>();
         cbxxa = new javax.swing.JComboBox<>();
         cbxkhuvuc = new javax.swing.JComboBox<>();
         txtthunhaptu = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        lbdvtu = new javax.swing.JLabel();
         bttimkiem = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        lbphanloai = new javax.swing.JLabel();
         cbxphanloai = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
+        lbnguyennhan = new javax.swing.JLabel();
         cbxnguyennhan = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
+        lbnam = new javax.swing.JLabel();
         txtnam = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdstimkiem = new javax.swing.JTable();
         btsua = new javax.swing.JButton();
         btxoa = new javax.swing.JButton();
         txtthunhaptoi = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbdvtoi = new javax.swing.JLabel();
+        lbdantoc = new javax.swing.JLabel();
         cbxdantoc = new javax.swing.JComboBox<>();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Tên chủ hộ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 170, -1));
+        lbtench.setText("Tên chủ hộ");
+        add(lbtench, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 170, -1));
 
         txtchuho.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txtchuho, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 20, 170, -1));
 
-        jLabel2.setText("Quận huyện");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 51, 170, -1));
+        lbhuyen.setText("Quận huyện");
+        add(lbhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 51, 170, -1));
 
-        jLabel3.setText("Xã phường");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 107, 170, -1));
+        lbxa.setText("Xã phường");
+        add(lbxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 107, 170, -1));
 
-        jLabel4.setText("Khu vực");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 158, 170, -1));
+        lbkhuvuc.setText("Khu vực");
+        add(lbkhuvuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 158, 170, -1));
 
-        jLabel5.setText("Thu nhập");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 379, 170, -1));
+        lbthunhap.setText("Thu nhập");
+        add(lbthunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 379, 170, -1));
 
-        jLabel6.setText("Từ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 402, 35, -1));
+        lbtttu.setText("Từ");
+        add(lbtttu, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 402, 35, -1));
 
-        jLabel7.setText("Tới");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 428, 35, -1));
+        lbtttoi.setText("Tới");
+        add(lbtttoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 428, 35, -1));
 
         cbxhuyen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,10 +131,10 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         txtthunhaptu.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txtthunhaptu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 52, -1));
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("000 VNĐ");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 50, 20));
-        jLabel9.getAccessibleContext().setAccessibleName("000  VNĐ");
+        lbdvtu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbdvtu.setText("000 VNĐ");
+        add(lbdvtu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 50, 20));
+        lbdvtu.getAccessibleContext().setAccessibleName("000  VNĐ");
 
         bttimkiem.setText("Tìm kiếm");
         bttimkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -144,18 +144,18 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         });
         add(bttimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 490, 170, -1));
 
-        jLabel10.setText("Phân loại");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 270, 170, -1));
+        lbphanloai.setText("Phân loại");
+        add(lbphanloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 270, 170, -1));
 
         add(cbxphanloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 290, 170, -1));
 
-        jLabel11.setText("Nguyên nhân");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 321, 170, -1));
+        lbnguyennhan.setText("Nguyên nhân");
+        add(lbnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 321, 170, -1));
 
         add(cbxnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 341, 170, -1));
 
-        jLabel13.setText("Năm");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 466, 35, -1));
+        lbnam.setText("Năm");
+        add(lbnam, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 466, 35, -1));
 
         txtnam.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txtnam, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 52, -1));
@@ -204,13 +204,13 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
         txtthunhaptoi.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(txtthunhaptoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 52, -1));
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("000 VNĐ");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 50, 20));
-        jLabel14.getAccessibleContext().setAccessibleName("000  VNĐ");
+        lbdvtoi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbdvtoi.setText("000 VNĐ");
+        add(lbdvtoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 50, 20));
+        lbdvtoi.getAccessibleContext().setAccessibleName("000  VNĐ");
 
-        jLabel12.setText("Dân tộc");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 214, 170, -1));
+        lbdantoc.setText("Dân tộc");
+        add(lbdantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 214, 170, -1));
 
         add(cbxdantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 239, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -439,20 +439,20 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbxnguyennhan;
     private javax.swing.JComboBox<String> cbxphanloai;
     private javax.swing.JComboBox<String> cbxxa;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbdantoc;
+    private javax.swing.JLabel lbdvtoi;
+    private javax.swing.JLabel lbdvtu;
+    private javax.swing.JLabel lbhuyen;
+    private javax.swing.JLabel lbkhuvuc;
+    private javax.swing.JLabel lbnam;
+    private javax.swing.JLabel lbnguyennhan;
+    private javax.swing.JLabel lbphanloai;
+    private javax.swing.JLabel lbtench;
+    private javax.swing.JLabel lbthunhap;
+    private javax.swing.JLabel lbtttoi;
+    private javax.swing.JLabel lbtttu;
+    private javax.swing.JLabel lbxa;
     private javax.swing.JTable tbdstimkiem;
     private javax.swing.JTextField txtchuho;
     private javax.swing.JTextField txtnam;

@@ -67,97 +67,97 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
     private void initComponents() {
 
         cbxdantockn = new javax.swing.JComboBox();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lbnghe = new javax.swing.JLabel();
+        lbnamsinh = new javax.swing.JLabel();
+        lbdantockn = new javax.swing.JLabel();
+        lbgioitinh = new javax.swing.JLabel();
         cbxgioitinh = new javax.swing.JComboBox();
         cbxquanhe = new javax.swing.JComboBox();
-        jLabel18 = new javax.swing.JLabel();
+        lbquanhe = new javax.swing.JLabel();
         txthotenkn = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lbhotenkn = new javax.swing.JLabel();
+        lbdskn = new javax.swing.JLabel();
+        lbnhao = new javax.swing.JLabel();
         cbxnhao = new javax.swing.JComboBox();
-        jLabel15 = new javax.swing.JLabel();
+        lbnguyennhan = new javax.swing.JLabel();
         cbxnguyennhan = new javax.swing.JComboBox();
         cbxnuoc = new javax.swing.JComboBox();
         cbDaCapThe = new javax.swing.JCheckBox();
-        jLabel13 = new javax.swing.JLabel();
+        lbnuoc = new javax.swing.JLabel();
         txtthunhap = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        lbthunhap = new javax.swing.JLabel();
         txtnamngheo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         cbxkhuvuc = new javax.swing.JComboBox();
         cbxphanloai = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
+        lbphanloai = new javax.swing.JLabel();
         cbxdantocch = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbdantoc = new javax.swing.JLabel();
+        lbhuyen = new javax.swing.JLabel();
         txtxa = new javax.swing.JTextField();
         txtxom = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lbxa = new javax.swing.JLabel();
         txthuyen = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lbkhuvuc = new javax.swing.JLabel();
         txthotench = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        lbhuy = new javax.swing.JButton();
         txtnamsinhkn = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        lbtench = new javax.swing.JLabel();
+        lbdvthunhap = new javax.swing.JLabel();
         txtmahn = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbtieude = new javax.swing.JLabel();
+        lbxom = new javax.swing.JLabel();
         btchinhsua = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        lbxoakn = new javax.swing.JButton();
         btthemhn = new javax.swing.JButton();
         btthemkn = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
+        lbdoituongcs = new javax.swing.JLabel();
         cbxnghenghiep = new javax.swing.JComboBox();
         cbxdoituong = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdanhsachkn = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        lbmahn = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add(cbxdantockn, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 305, 125, -1));
 
-        jLabel22.setText("Nghề nghiệp");
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 308, 73, -1));
+        lbnghe.setText("Nghề nghiệp");
+        add(lbnghe, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 308, 73, -1));
 
-        jLabel20.setText("Năm Sinh");
-        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(884, 270, -1, -1));
+        lbnamsinh.setText("Năm Sinh");
+        add(lbnamsinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(884, 270, -1, -1));
 
-        jLabel21.setText("Dân tộc");
-        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 308, 81, -1));
+        lbdantockn.setText("Dân tộc");
+        add(lbdantockn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 308, 81, -1));
 
-        jLabel19.setText("Giới tính");
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 270, 58, -1));
+        lbgioitinh.setText("Giới tính");
+        add(lbgioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 270, 58, -1));
 
         cbxgioitinh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1.Nam", "2.Nữ" }));
         add(cbxgioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 267, 71, -1));
 
         add(cbxquanhe, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 267, 139, -1));
 
-        jLabel18.setText("Quan hệ với chủ hộ");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 270, 109, -1));
+        lbquanhe.setText("Quan hệ với chủ hộ");
+        add(lbquanhe, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 270, 109, -1));
         add(txthotenkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 267, 125, -1));
 
-        jLabel17.setText("Họ tên");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 81, -1));
+        lbhotenkn.setText("Họ tên");
+        add(lbhotenkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 81, -1));
 
-        jLabel16.setBackground(new java.awt.Color(0, 0, 153));
-        jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel16.setText("Danh sách khẩu nghèo");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 226, 1071, -1));
+        lbdskn.setBackground(new java.awt.Color(0, 0, 153));
+        lbdskn.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        lbdskn.setText("Danh sách khẩu nghèo");
+        add(lbdskn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 226, 1071, -1));
 
-        jLabel14.setText("Nhà ở");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 128, 81, -1));
+        lbnhao.setText("Nhà ở");
+        add(lbnhao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 128, 81, -1));
 
         add(cbxnhao, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 125, 128, -1));
 
-        jLabel15.setText("Nguyên nhân nghèo");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 128, -1, -1));
+        lbnguyennhan.setText("Nguyên nhân nghèo");
+        add(lbnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 128, -1, -1));
 
         add(cbxnguyennhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 125, 220, -1));
 
@@ -166,8 +166,8 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         cbDaCapThe.setText("Đã cấp thẻ");
         add(cbDaCapThe, new org.netbeans.lib.awtextra.AbsoluteConstraints(827, 178, 100, -1));
 
-        jLabel13.setText("Nước sạch");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 128, 78, -1));
+        lbnuoc.setText("Nước sạch");
+        add(lbnuoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 128, 78, -1));
 
         txtthunhap.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtthunhap.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -177,9 +177,9 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         });
         add(txtthunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 87, 100, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setText("Thu nhập");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 90, 97, -1));
+        lbthunhap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbthunhap.setText("Thu nhập");
+        add(lbthunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 90, 97, -1));
 
         txtnamngheo.setEditable(false);
         txtnamngheo.setBackground(new java.awt.Color(204, 204, 204));
@@ -206,16 +206,16 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         cbxphanloai.setFocusable(false);
         add(cbxphanloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 90, 139, -1));
 
-        jLabel9.setText("Phân Loại");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 90, 58, -1));
+        lbphanloai.setText("Phân Loại");
+        add(lbphanloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 90, 58, -1));
 
         add(cbxdantocch, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 87, 154, -1));
 
-        jLabel8.setText("Dân Tộc");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 90, 78, -1));
+        lbdantoc.setText("Dân Tộc");
+        add(lbdantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 90, 78, -1));
 
-        jLabel7.setText("Huyện");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 50, 52, -1));
+        lbhuyen.setText("Huyện");
+        add(lbhuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 50, 52, -1));
 
         txtxa.setEditable(false);
         txtxa.setBackground(new java.awt.Color(204, 204, 204));
@@ -225,8 +225,8 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         add(txtxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 49, 108, -1));
         add(txtxom, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 49, 63, -1));
 
-        jLabel3.setText("Xã");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 52, 32, -1));
+        lbxa.setText("Xã");
+        add(lbxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 52, 32, -1));
 
         txthuyen.setEditable(false);
         txthuyen.setBackground(new java.awt.Color(204, 204, 204));
@@ -235,8 +235,8 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         txthuyen.setFocusable(false);
         add(txthuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, 139, -1));
 
-        jLabel6.setText("Khu Vực");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 81, -1));
+        lbkhuvuc.setText("Khu Vực");
+        add(lbkhuvuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 81, -1));
 
         txthotench.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -245,22 +245,22 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         });
         add(txthotench, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 49, 154, -1));
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton6.setText("Hủy");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        lbhuy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbhuy.setText("Hủy");
+        lbhuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                lbhuyActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, 103, -1));
+        add(lbhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, 103, -1));
         add(txtnamsinhkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 267, 100, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Tên chủ hộ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 52, 78, -1));
+        lbtench.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbtench.setText("Tên chủ hộ");
+        add(lbtench, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 52, 78, -1));
 
-        jLabel24.setText("000 VNĐ/Người/Tháng");
-        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 110, -1));
+        lbdvthunhap.setText("000 VNĐ/Người/Tháng");
+        add(lbdvthunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 110, -1));
 
         txtmahn.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -269,12 +269,12 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         });
         add(txtmahn, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 49, 128, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Thêm hộ nghèo");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 161, 27));
+        lbtieude.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbtieude.setText("Thêm hộ nghèo");
+        add(lbtieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 161, 27));
 
-        jLabel5.setText("Thôn/Xóm");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 52, 97, -1));
+        lbxom.setText("Thôn/Xóm");
+        add(lbxom, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 52, 97, -1));
 
         btchinhsua.setText("Chỉnh sửa");
         btchinhsua.addActionListener(new java.awt.event.ActionListener() {
@@ -284,13 +284,13 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         });
         add(btchinhsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 343, 113, -1));
 
-        jButton3.setText("Xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        lbxoakn.setText("Xóa");
+        lbxoakn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                lbxoaknActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 343, 97, -1));
+        add(lbxoakn, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 343, 97, -1));
 
         btthemhn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btthemhn.setText("Thêm");
@@ -309,8 +309,8 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         });
         add(btthemkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 343, 129, -1));
 
-        jLabel23.setText("Đối tượng chính sách");
-        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 308, 126, -1));
+        lbdoituongcs.setText("Đối tượng chính sách");
+        add(lbdoituongcs, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 308, 126, -1));
 
         add(cbxnghenghiep, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 305, 139, -1));
 
@@ -333,8 +333,8 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 384, 1090, 167));
 
-        jLabel2.setText("Mã hộ nghèo");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 52, 81, -1));
+        lbmahn.setText("Mã hộ nghèo");
+        add(lbmahn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 52, 81, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtthunhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtthunhapFocusLost
@@ -385,10 +385,10 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         cbxquanhe.setSelectedIndex(0);
     }//GEN-LAST:event_txthotenchFocusLost
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void lbhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbhuyActionPerformed
         // TODO add your handling code here:
         xoaHienThi();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_lbhuyActionPerformed
 
     private void txtmahnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmahnFocusLost
         // TODO add your handling code here:
@@ -446,12 +446,12 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         btchinhsua.setEnabled(false);
     }//GEN-LAST:event_btchinhsuaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void lbxoaknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbxoaknActionPerformed
         // TODO add your handling code here:
         int index = tbdanhsachkn.getSelectedRow();
         listkn.remove(index);
         xemDanhSachKN();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_lbxoaknActionPerformed
 
     private void btthemhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemhnActionPerformed
         // TODO add your handling code here:
@@ -692,32 +692,32 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
     private javax.swing.JComboBox cbxnuoc;
     private javax.swing.JComboBox cbxphanloai;
     private javax.swing.JComboBox cbxquanhe;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbdantoc;
+    private javax.swing.JLabel lbdantockn;
+    private javax.swing.JLabel lbdoituongcs;
+    private javax.swing.JLabel lbdskn;
+    private javax.swing.JLabel lbdvthunhap;
+    private javax.swing.JLabel lbgioitinh;
+    private javax.swing.JLabel lbhotenkn;
+    private javax.swing.JButton lbhuy;
+    private javax.swing.JLabel lbhuyen;
+    private javax.swing.JLabel lbkhuvuc;
+    private javax.swing.JLabel lbmahn;
+    private javax.swing.JLabel lbnamsinh;
+    private javax.swing.JLabel lbnghe;
+    private javax.swing.JLabel lbnguyennhan;
+    private javax.swing.JLabel lbnhao;
+    private javax.swing.JLabel lbnuoc;
+    private javax.swing.JLabel lbphanloai;
+    private javax.swing.JLabel lbquanhe;
+    private javax.swing.JLabel lbtench;
+    private javax.swing.JLabel lbthunhap;
+    private javax.swing.JLabel lbtieude;
+    private javax.swing.JLabel lbxa;
+    private javax.swing.JButton lbxoakn;
+    private javax.swing.JLabel lbxom;
     private javax.swing.JTable tbdanhsachkn;
     private javax.swing.JTextField txthotench;
     private javax.swing.JTextField txthotenkn;
