@@ -5,8 +5,7 @@
  */
 package Main;
 
-import Control.Checklog;
-import java.sql.PreparedStatement;
+import Control.DKCanBo;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import Entity.CanBo;
@@ -15,8 +14,7 @@ import java.awt.Toolkit;
 
 
 public class FormDangNhap extends javax.swing.JFrame {
-    public static ResultSet rs= null;
-    public static PreparedStatement pst =null;
+    private static ResultSet rs= null;
     public FormDangNhap() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -122,7 +120,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         if(this.jtdangnhap.getText().length()==0 || String.valueOf(this.jtmk.getPassword()).length()==0)
            JOptionPane.showMessageDialog(null, "Ban chua nhap thong tin tai khoan hoac mat khau","thong bao",1);
         else {   
-           rs = Checklog.cLog(this.jtdangnhap.getText(), String.valueOf(this.jtmk.getPassword()));
+           rs = DKCanBo.DangNhap(this.jtdangnhap.getText(), String.valueOf(this.jtmk.getPassword()));
             try{
                 if(rs.next())
                 {       
@@ -183,6 +181,7 @@ public class FormDangNhap extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FormDangNhap().setVisible(true);
             }

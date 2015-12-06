@@ -6,7 +6,7 @@
 package Main;
 
 import Control.DKCanBo;
-import Control.UpdataTable;
+import Control.DKCanBo;
 import Entity.CanBo;
 import Entity.DanhMuc;
 import Entity.DiaBanInt;
@@ -118,7 +118,7 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 170, 170, -1));
 
         jLabel6.setText("Họ tên");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 10, 170, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 170, -1));
         add(cbxquanhe, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 190, 170, -1));
 
         jLabel1.setText("Dân tộc");
@@ -152,7 +152,7 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbdskn);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 7, 920, 590));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 920, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxhuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxhuyenActionPerformed
@@ -343,6 +343,6 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
                     "                         dbo.tbHuyen ON dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen\n" +
                     " WHERE " + ten+ huyen + xa + dantoc + quanhe + doituong + ns + nam + " 1 = 1 " +
                     "ORDER BY Huyện, Xã, dbo.tbKhauNgheo.HoTen";
-        UpdataTable.LoadData(sql, tbdskn);
+        DKCanBo.LoadData(sql, tbdskn);
     }
 }

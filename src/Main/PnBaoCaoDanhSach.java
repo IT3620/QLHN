@@ -1,7 +1,6 @@
 
 package Main;
 import Control.DKCanBo;
-import Control.UpdataTable;
 import Entity.CanBo;
 import Entity.DanhMuc;
 import Entity.DiaBanInt;
@@ -99,7 +98,7 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
             strxa= getIDStr(cbxxa).toUpperCase();;
             this.txtbaocaods.setText("BÁO CÁO DANH SÁCH HỘ NGHÈO XÃ");
         }
-                UpdataTable.LoadData(sql, tbbaocaodanhsach);
+                DKCanBo.LoadData(sql, tbbaocaodanhsach);
                 this.txtnam.setText(""+Entity.HeThong.namNgheo);
     }
   
@@ -131,7 +130,7 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
 "                      dbo.tbKhuVuc ON dbo.tbXa.IDKhuVuc = dbo.tbKhuVuc.IDKhuVuc INNER JOIN\n" +
 "                      dbo.tbHuyen ON dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen "
                 + "WHERE " + xa + huyen + nam + " 1=1";
-        UpdataTable.LoadData(sql, tbbaocaodanhsach);
+        DKCanBo.LoadData(sql, tbbaocaodanhsach);
     }
      
     @SuppressWarnings("unchecked")

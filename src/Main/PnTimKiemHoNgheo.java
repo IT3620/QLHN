@@ -14,7 +14,7 @@ import Entity.HeThong;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import Control.UpdataTable;
+import Control.DKCanBo;
 import java.awt.HeadlessException;
 
 /**
@@ -377,7 +377,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                "WHERE " + ten + huyen + xa + khuvuc + dantoc + phanloai + nguyennhan + thunhap + nam + " 1=1 " +
                 "ORDER BY dbo.tbHuyen.TenHuyen, dbo.tbXa.TenXa, dbo.tbHoNgheo.TenCH";
         
-        UpdataTable.LoadData(sql, tbdstimkiem);
+        DKCanBo.LoadData(sql, tbdstimkiem);
     }
      private String getIDStr(JComboBox cbx) {
         if (cbx.getSelectedIndex() == 0)

@@ -4,24 +4,82 @@ package Control;
 import Entity.DanhMuc;
 import Entity.HeThong;
 import Entity.DiaBan;
-import Database.Connect;
 import Entity.DiaBanInt;
 import Entity.HoNgheo;
 import Entity.KhauNgheo;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.*; 
 public class DKCanBo {
-    public static Connection conn = Connect.getConnect();
-    public  static PreparedStatement pst = null;
-    public static ResultSet rs=null;
+    private static Connection conn = getConnect();
+    private  static PreparedStatement pst = null;
+    private static ResultSet rs=null;
+    public static String capql =null;
+    public static String xa =null;
+    public static String huyen =null;
+    
+    public static Connection getConnect() {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlserver://localhost:6789;instance=SQLEXPRESS;databaseName=QLHN", "sa", "1900100co");
+            return conn;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ket noi co so du lieu that bai","Thong bao",2);
+            return null;
+        }
+    }
+    
+    public static ResultSet DangNhap(String ID,String matKhau){
+        String sql ="select * from QLHN.dbo.tbCanBo where IDCanBo='"+ID+"' and MatKhau ='"+matKhau+"'";
+        try {
+               conn = getConnect();
+             pst = conn.prepareStatement(sql);            
+        return rs = pst.executeQuery();
+        } catch (Exception ex) {
+            return rs=null;
+        }   
+    }
+    
+    public static void LoadData(String sql, JTable tb)
+    {
+        try
+        {
+            pst= conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            tb.setModel((DbUtils.resultSetToTableModel(rs)));
+            // ngay chỗ này là nạp dữ liệu lên bảng mà mình truyền vào
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e,"Thông báo lỗi",1);
+        }
+    }
+//    // Tiếp theo ta viết 1 hàm đỗ 1 dòng dữ liệu từ bảng lên texfield
+//    public static ResultSet ShowTextField(String sql)
+//    {
+//        try
+//        {
+//            pst= conn.prepareStatement(sql);
+//            return pst.executeQuery();
+//            // Trả về 1 dòng dữ liệu đọc được
+//        }
+//        catch(Exception e)
+//        {
+//            return null;
+//            //JOptionPane.showMessageDialog(null, e,"Thông báo lỗi",1);
+//            // với Java tất cả mọi thứ dều nằm vào try catch , bạn nên lưu ý đều này
+//        }
+//        
+//    }
     
     public static int themHoNgheo(HoNgheo hoNgheo) {
         try {
@@ -364,8 +422,17 @@ public class DKCanBo {
         } catch (Exception ex) {
             return dsHuyen;
         }
+    }  
+}
+
+class MyTableModel extends DefaultTableModel {
+
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false;
     }
-    
-    
-     
+
+    public MyTableModel(Vector data, Vector cols) {
+        super(data, cols);
+    }
 }
