@@ -5,16 +5,15 @@
  */
 package View;
 
-import Control.DKCanBo;
+import Control.QLCanBo;
 import Model.CanBo;
+import Model.CanBoXa;
 import Model.DanhMuc;
 import Model.DiaBan;
-import Model.DiaBanInt;
 import Model.HeThong;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import Control.DKCanBo;
 import java.awt.HeadlessException;
 
 /**
@@ -26,21 +25,21 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     /**
      * Creates new form PnTimKiemHoNgheo
      */
-    private static CanBo userInfo;
-    public PnTimKiemHoNgheo(CanBo userInfo) {
-        PnTimKiemHoNgheo.userInfo = userInfo;
+    private static CanBo canbo;
+    public PnTimKiemHoNgheo(CanBo canbo) {
+        PnTimKiemHoNgheo.canbo = canbo;
         initComponents();
         loadComboBox();
         loadDanhSachHuyen();
-        if (userInfo.getCapQL() == 2) {
+        if (canbo.getCapQL() == 2) {
             cbxhuyen.setEnabled(false);
-            cbxhuyen.setSelectedIndex(userInfo.getDiaBanQL());
+            cbxhuyen.setSelectedIndex(canbo.getDiaBanQL());
         }
-        if (userInfo.getCapQL() == 3) {
+        if (canbo.getCapQL() == 3) {
             cbxhuyen.setEnabled(false);
-            DiaBanInt db = DKCanBo.layDiaBanInt(3, userInfo.getDiaBanQL());
-            cbxhuyen.setSelectedIndex(db.getHuyen());
-            cbxxa.setSelectedIndex(userInfo.getDiaBanQL());
+            DiaBan db = QLCanBo.layDiaBan(3, canbo.getDiaBanQL());
+            cbxhuyen.setSelectedIndex(db.getHuyen().id);
+            cbxxa.setSelectedIndex(canbo.getDiaBanQL());
             cbxxa.setEnabled(false);
         }
         
@@ -176,6 +175,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tbdstimkiem.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         tbdstimkiem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbdstimkiemMouseClicked(evt);
@@ -289,7 +289,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
             return;
         }
             
-        DKCanBo.xoaKhoiDanhSachHN(idHoNgheo, nam);
+        ((CanBoXa)canbo).xoaKhoiDanhSachHN(idHoNgheo, nam);
         tbdstimkiemMouseClicked(null);
         btsua.setEnabled(false);
         btxoa.setEnabled(false);
@@ -298,14 +298,14 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
         int index = tbdstimkiem.getSelectedRow();
-        if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
+        if (canbo.getCapQL() < 3 || !canbo.isTrangThai()) {
             JOptionPane.showMessageDialog(bttimkiem, "Bạn không có quyền chỉnh sửa hộ nghèo", "Thông báo lỗi", 2);
             return;
         }
         if (index < 0)
             return;
         int idHoNgheo = (int)tbdstimkiem.getValueAt(index, 0);
-        FormChinhSuaHoNgheo frChinhSuaHoNgheo = new FormChinhSuaHoNgheo(userInfo, idHoNgheo);
+        FormChinhSuaHoNgheo frChinhSuaHoNgheo = new FormChinhSuaHoNgheo(canbo, idHoNgheo);
         frChinhSuaHoNgheo.setVisible(true);
     }//GEN-LAST:event_btsuaActionPerformed
 
@@ -377,7 +377,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
                "WHERE " + ten + huyen + xa + khuvuc + dantoc + phanloai + nguyennhan + thunhap + nam + " 1=1 " +
                 "ORDER BY dbo.tbHuyen.TenHuyen, dbo.tbXa.TenXa, dbo.tbHoNgheo.TenCH";
         
-        DKCanBo.LoadData(sql, tbdstimkiem);
+        QLCanBo.LoadData(sql, tbdstimkiem);
     }
      private String getIDStr(JComboBox cbx) {
         if (cbx.getSelectedIndex() == 0)
@@ -413,7 +413,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     }
     
     public void loadDanhSachHuyen() {
-        ArrayList<DanhMuc> dsHuyen = DKCanBo.layDanhSachHuyen();
+        ArrayList<DanhMuc> dsHuyen = QLCanBo.layDanhSachHuyen();
         cbxhuyen.removeAllItems();
         cbxhuyen.addItem("Tất cả");
         if (dsHuyen != null)
@@ -422,7 +422,7 @@ public final class PnTimKiemHoNgheo extends javax.swing.JPanel {
     }
 
     public void loadDanhSachXa(int huyen) {
-        ArrayList<DanhMuc> dsXa = DKCanBo.layDanhSachXa(huyen);
+        ArrayList<DanhMuc> dsXa = QLCanBo.layDanhSachXa(huyen);
         cbxxa.removeAllItems();
         cbxxa.addItem("Tất cả");
         if (dsXa != null)

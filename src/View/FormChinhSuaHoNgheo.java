@@ -5,9 +5,9 @@ import Model.KhauNgheo;
 import Model.CanBo;
 import Model.HeThong;
 import Model.DiaBan;
-import Control.DKCanBo;
+import Control.QLCanBo;
+import Model.CanBoXa;
 import Model.HoNgheo;
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
@@ -26,45 +26,44 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
     /**
      * Creates new form FrChinhSuaHoNgheo
      */
-    private static CanBo userInfo;
+    private static CanBo canbo;
     private static final ArrayList<KhauNgheo> listkn = new ArrayList<>();
     private static int idHoNgheo;
 
-    public FormChinhSuaHoNgheo(CanBo userInfo, int idHoNgheo) {
+    public FormChinhSuaHoNgheo(CanBo canbo, int idHoNgheo) {
         FormChinhSuaHoNgheo.idHoNgheo = idHoNgheo;
-        FormChinhSuaHoNgheo.userInfo = userInfo;
+        FormChinhSuaHoNgheo.canbo = canbo;
         initComponents();
-        
+
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        
+        setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
         loadComBox();
         loadDiaBan();
         xemDanhSachKN();
-        
-           
+
         btchinhsua.setEnabled(false);
         txtnamngheo.setText("" + HeThong.namNgheo);
 
-        if (userInfo.isTrangThai() == false) {
+        if (canbo.isTrangThai() == false) {
             btchinhsua.setVisible(false);
             btsua.setVisible(false);
             btthemkn.setVisible(false);
             JOptionPane.showMessageDialog(null, "Bạn hiện không có quyền thêm, liên hệ cấp quản trị cao hơn để biết thêm thông tin", "Thông báo", 2);
         }
-        
+
         try {
-            HoNgheo hoNgheo = DKCanBo.layThongTinHN(idHoNgheo);
+            HoNgheo hoNgheo = canbo.layThongTinHN(idHoNgheo);
             if (hoNgheo == null) {
                 JOptionPane.showMessageDialog(this, "Mã hộ nghèo không tồn tại", "Thông báo lỗi", 2);
                 xoaHienThi();
             }
             hienThiHoNgheo(hoNgheo, idHoNgheo);
-            
+
         } catch (Exception ex) {
 
         }
-        
+
         txtmahn.setText("" + idHoNgheo);
     }
 
@@ -357,8 +356,9 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
     private void txtthunhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtthunhapFocusLost
         // TODO add your handling code here:
         int tn;
-        if (txtthunhap.getText().equals(""))
+        if (txtthunhap.getText().equals("")) {
             return;
+        }
         try {
             tn = Integer.parseInt(txtthunhap.getText()) * 1000;
         } catch (Exception ex) {
@@ -373,7 +373,7 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
             return;
         }
 
-        if (userInfo.getIdKhuVuc() == 1) {
+        if (canbo.getIdKhuVuc() == 1) {
             if (tn > HeThong.canNgheoNT) {
                 JOptionPane.showMessageDialog(this, "Thu nhập không nằm trong đối tượng hộ nghèo hoặc cận nghèo");
                 txtthunhap.setText("");
@@ -496,14 +496,16 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
                 return;
             }
 
-            HoNgheo hoNgheo = new HoNgheo(txthotench.getText(), txtxom.getText(), userInfo.getDiaBanQL(), getIDInt(cbxdantocch), getIDInt(cbxphanloai), Integer.parseInt(txtthunhap.getText()) * 1000, getIDInt(cbxnuoc), getIDInt(cbxnguyennhan), cbDaCapThe.isSelected(), getIDInt(cbxnhao));
+            HoNgheo hoNgheo = new HoNgheo(txthotench.getText(), txtxom.getText(), canbo.getDiaBanQL(), getIDInt(cbxdantocch), getIDInt(cbxphanloai), Integer.parseInt(txtthunhap.getText()) * 1000, getIDInt(cbxnuoc), getIDInt(cbxnguyennhan), cbDaCapThe.isSelected(), getIDInt(cbxnhao));
             for (KhauNgheo kn : listkn) {
                 hoNgheo.themKN(kn);
             }
-            
-            
 
-          if (DKCanBo.suaHoNgheo(hoNgheo, idHoNgheo)) {
+            if (!(canbo instanceof CanBoXa) || !canbo.isTrangThai()) {
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền chỉnh sửa", "Thông báo lỗi", 2);
+                return;
+            }
+            if (((CanBoXa)canbo).suaHoNgheo(hoNgheo, idHoNgheo)) {
                 JOptionPane.showMessageDialog(this, "Đã sửa hộ nghèo thành công", "Thành công", 1);
             } else {
                 JOptionPane.showMessageDialog(this, "Kiểm tra lại thông tin hộ nghèo", "Thất bại", 1);
@@ -546,16 +548,17 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FormChinhSuaHoNgheo fr = new FormChinhSuaHoNgheo(userInfo, idHoNgheo);
+                FormChinhSuaHoNgheo fr = new FormChinhSuaHoNgheo(canbo, idHoNgheo);
                 fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 fr.setVisible(true);
             }
         });
     }
 
-    private void exitForm(java.awt.event.WindowEvent evt) {                          
-     this.dispose();// here [this] keyword means your current frame
-} 
+    private void exitForm(java.awt.event.WindowEvent evt) {
+        this.dispose();// here [this] keyword means your current frame
+    }
+
     private void xoaHienThi() {
         txthotenkn.setText("");
         cbxquanhe.setSelectedIndex(0);
@@ -590,10 +593,10 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
         }
         txthotench.setText(hoNgheo.getTenCH());
         txtxom.setText(hoNgheo.getXom());
-        DiaBan db = DKCanBo.layDiaBan(3, hoNgheo.getIdXa());
-        txtxa.setText(db.getXa());
-        txthuyen.setText(db.getHuyen());
-        cbxkhuvuc.setSelectedIndex(userInfo.getIdKhuVuc() - 1);
+        DiaBan db = QLCanBo.layDiaBan(3, hoNgheo.getIdXa());
+        txtxa.setText(db.getXa().ten);
+        txthuyen.setText(db.getHuyen().ten);
+        cbxkhuvuc.setSelectedIndex(canbo.getIdKhuVuc() - 1);
         cbxdantocch.setSelectedIndex(hoNgheo.getIdDanToc() - 1);
         txtthunhap.setText("" + hoNgheo.getThuNhapTB() / 1000);
         cbxphanloai.setSelectedIndex(hoNgheo.getIdPhanLoai() - 1);
@@ -687,10 +690,10 @@ public final class FormChinhSuaHoNgheo extends javax.swing.JFrame {
     }
 
     public void loadDiaBan() {
-        DiaBan db = DKCanBo.layDiaBan(userInfo.getCapQL(), userInfo.getDiaBanQL());
-        txthuyen.setText(db.getHuyen());
-        txtxa.setText(db.getXa());
-        cbxkhuvuc.setSelectedIndex(userInfo.getIdKhuVuc() - 1);
+        DiaBan db = QLCanBo.layDiaBan(canbo.getCapQL(), canbo.getDiaBanQL());
+        txthuyen.setText(db.getHuyen().ten);
+        txtxa.setText(db.getXa().ten);
+        cbxkhuvuc.setSelectedIndex(canbo.getIdKhuVuc() - 1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

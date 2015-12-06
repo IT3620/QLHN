@@ -5,20 +5,21 @@
  */
 package View;
 
-import Control.DKCanBo;
+import Control.QLCanBo;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import Model.CanBo;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-
 public class FormDangNhap extends javax.swing.JFrame {
-    private static ResultSet rs= null;
+
+    private static ResultSet rs = null;
+
     public FormDangNhap() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
     /**
@@ -32,8 +33,8 @@ public class FormDangNhap extends javax.swing.JFrame {
 
         lbtendangnhap = new javax.swing.JLabel();
         lbmatkhau = new javax.swing.JLabel();
-        jtdangnhap = new javax.swing.JTextField();
-        jtmk = new javax.swing.JPasswordField();
+        txtten = new javax.swing.JTextField();
+        txtmatkhau = new javax.swing.JPasswordField();
         lbtieude = new javax.swing.JLabel();
         btdangnhap = new javax.swing.JButton();
         btthoat = new javax.swing.JButton();
@@ -44,17 +45,6 @@ public class FormDangNhap extends javax.swing.JFrame {
         lbtendangnhap.setText("Tên đăng nhập");
 
         lbmatkhau.setText("Mật khẩu");
-
-        jtmk.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtmkMouseClicked(evt);
-            }
-        });
-        jtmk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtmkActionPerformed(evt);
-            }
-        });
 
         lbtieude.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbtieude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -88,8 +78,8 @@ public class FormDangNhap extends javax.swing.JFrame {
                                 .addComponent(lbtendangnhap, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtdangnhap)
-                                .addComponent(jtmk, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)))))
+                                .addComponent(txtten)
+                                .addComponent(txtmatkhau, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,11 +90,11 @@ public class FormDangNhap extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbtendangnhap)
-                    .addComponent(jtdangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbmatkhau)
-                    .addComponent(jtmk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btdangnhap)
@@ -117,69 +107,31 @@ public class FormDangNhap extends javax.swing.JFrame {
 
     private void btdangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btdangnhapActionPerformed
         // TODO add your handling code here:
-        if(this.jtdangnhap.getText().length()==0 || String.valueOf(this.jtmk.getPassword()).length()==0)
-           JOptionPane.showMessageDialog(null, "Ban chua nhap thong tin tai khoan hoac mat khau","thong bao",1);
-        else {   
-           rs = DKCanBo.DangNhap(this.jtdangnhap.getText(), String.valueOf(this.jtmk.getPassword()));
-            try{
-                if(rs.next())
-                {       
-                        CanBo userInfo = new CanBo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getBoolean(6));
-                        
-                        FormCanBo frm = new FormCanBo(userInfo); 
-                        frm.setVisible(true);
-                        this.dispose();
-                }
-                else 
-                {
-                    //dang nhap that bai
-                    JOptionPane.showMessageDialog(null, "Nhập sai thông tin tài khoản hoặc mật khẩu, mời nhập lại","thong bao",0);
-                }
-            }catch( Exception e)
-            {
-                JOptionPane.showMessageDialog(null,e,"thong bao",1);
+        if (txtten.getText().length() == 0 || String.valueOf(txtmatkhau.getPassword()).length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Chưa nhập tên tài khoản hoặc mật khẩu", "Lỗi đăng nhập", 2);
+            return;
+        }
+
+        String ten = txtten.getText(), matkhau = String.valueOf(txtmatkhau.getPassword());
+        try {
+            CanBo canbo = QLCanBo.dangNhap(ten, matkhau);
+            if (canbo == null) {
+                JOptionPane.showMessageDialog(rootPane, "Tài khoản không tồn tại hoặc không có kết nối đến cơ sở dữ liệu", "Lỗi đăng nhập", 2);
+                return;
             }
-        } 
+            
+            FormCanBo frm = new FormCanBo(canbo);
+            frm.setVisible(true);
+            this.dispose();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Đã xảy ra lỗi đăng nhập", "Lỗi đăng nhập", 2);
+        }
     }//GEN-LAST:event_btdangnhapActionPerformed
-
-    private void jtmkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtmkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtmkActionPerformed
-
-    private void jtmkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmkMouseClicked
-        // TODO add your handling code here:
-        this.jtmk.setText("");
-    }//GEN-LAST:event_jtmkMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -191,10 +143,10 @@ public class FormDangNhap extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btdangnhap;
     private javax.swing.JButton btthoat;
-    private javax.swing.JTextField jtdangnhap;
-    private javax.swing.JPasswordField jtmk;
     private javax.swing.JLabel lbmatkhau;
     private javax.swing.JLabel lbtendangnhap;
     private javax.swing.JLabel lbtieude;
+    private javax.swing.JPasswordField txtmatkhau;
+    private javax.swing.JTextField txtten;
     // End of variables declaration//GEN-END:variables
 }

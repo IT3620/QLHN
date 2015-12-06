@@ -1,9 +1,9 @@
 
 package View;
-import Control.DKCanBo;
+import Control.QLCanBo;
 import Model.CanBo;
 import Model.DanhMuc;
-import Model.DiaBanInt;
+import Model.DiaBan;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -22,7 +22,7 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
    
     
     public void loadDanhSachHuyen() {
-        ArrayList<DanhMuc> dsHuyen = DKCanBo.layDanhSachHuyen();
+        ArrayList<DanhMuc> dsHuyen = QLCanBo.layDanhSachHuyen();
         cbxhuyen.removeAllItems();
         cbxhuyen.addItem("Tất cả");
         if (dsHuyen != null)
@@ -35,7 +35,7 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
         return cbx.getSelectedItem().toString().split("\\.")[1];
     }
     public void loadDanhSachXa(int huyen) {
-        ArrayList<DanhMuc> dsXa = DKCanBo.layDanhSachXa(huyen);
+        ArrayList<DanhMuc> dsXa = QLCanBo.layDanhSachXa(huyen);
         cbxxa.removeAllItems();
         cbxxa.addItem("Tất cả");
         if (dsXa != null)
@@ -91,14 +91,14 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
 "                      dbo.tbHuyen ON dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen\n" +
 "                      and dbo.tbXa.IDXa ="+userInfo.getDiaBanQL();
         cbxhuyen.setEnabled(false);
-            DiaBanInt db = DKCanBo.layDiaBanInt(3, userInfo.getDiaBanQL());
-            cbxhuyen.setSelectedIndex(db.getHuyen());
+            DiaBan db = QLCanBo.layDiaBan(3, userInfo.getDiaBanQL());
+            cbxhuyen.setSelectedIndex(db.getHuyen().id);
             cbxxa.setSelectedIndex(userInfo.getDiaBanQL());
             cbxxa.setEnabled(false);
             strxa= getIDStr(cbxxa).toUpperCase();;
             this.txtbaocaods.setText("BÁO CÁO DANH SÁCH HỘ NGHÈO XÃ");
         }
-                DKCanBo.LoadData(sql, tbbaocaodanhsach);
+                QLCanBo.LoadData(sql, tbbaocaodanhsach);
                 this.txtnam.setText(""+Model.HeThong.namNgheo);
     }
   
@@ -130,7 +130,7 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
 "                      dbo.tbKhuVuc ON dbo.tbXa.IDKhuVuc = dbo.tbKhuVuc.IDKhuVuc INNER JOIN\n" +
 "                      dbo.tbHuyen ON dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen "
                 + "WHERE " + xa + huyen + nam + " 1=1";
-        DKCanBo.LoadData(sql, tbbaocaodanhsach);
+        QLCanBo.LoadData(sql, tbbaocaodanhsach);
     }
      
     @SuppressWarnings("unchecked")

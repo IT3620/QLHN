@@ -41,8 +41,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jtdangnhap" max="32767" attributes="0"/>
-                              <Component id="jtmk" pref="176" max="32767" attributes="0"/>
+                              <Component id="txtten" max="32767" attributes="0"/>
+                              <Component id="txtmatkhau" pref="176" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -59,12 +59,12 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbtendangnhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtdangnhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtten" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbmatkhau" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtmk" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtmatkhau" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -87,13 +87,9 @@
         <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtdangnhap">
+    <Component class="javax.swing.JTextField" name="txtten">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jtmk">
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtmkMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtmkActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JPasswordField" name="txtmatkhau">
     </Component>
     <Component class="javax.swing.JLabel" name="lbtieude">
       <Properties>

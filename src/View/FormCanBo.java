@@ -5,8 +5,9 @@
  */
 package View;
 
-import Control.DKCanBo;
+import Control.QLCanBo;
 import Model.CanBo;
+import Model.CanBoXa;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -24,29 +25,29 @@ public class FormCanBo extends javax.swing.JFrame {
     private static PnThongTinHeThong pnThongTin;
     private static PnBaoCaoDanhSach pnBaoCao;
     private static PnBaoCaoSoLieu pnBaoCaoSL;
-    private static CanBo userInfo;
+    private static CanBo canbo;
     private static PnThemHoNgheo pnThemHoNgheo;
     private static PnTimKiemHoNgheo pnTimKiemHn;
     private static PnTimKiemKhauNgheo pnTimKiemKn;
 
-    public FormCanBo(CanBo userInfo) {
-        FormCanBo.userInfo = userInfo;
+    public FormCanBo(CanBo canbo) {
+        FormCanBo.canbo = canbo;
         initComponents();
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         
-        DKCanBo.layThongTinHeThong();
-        if (userInfo.getCapQL() == 3)
-            userInfo.setIdKhuVuc(DKCanBo.layKhuVuc(userInfo.getDiaBanQL()).id);
+        QLCanBo.layThongTinHeThong();
+        if (canbo instanceof CanBoXa)
+            canbo.setIdKhuVuc(QLCanBo.layIDKhuVuc(canbo.getDiaBanQL()).id);
         
         for (Component frmChild : pnNoiDung.getComponents()) {
             frmChild.setVisible(false);
         }
 
         if (pnThongTin == null) {
-            pnThongTin = new PnThongTinHeThong(userInfo);
+            pnThongTin = new PnThongTinHeThong(canbo);
             pnNoiDung.add(pnThongTin);
             pnThongTin.setVisible(true);
             pnNoiDung.validate();
@@ -86,6 +87,8 @@ public class FormCanBo extends javax.swing.JFrame {
         menubcsl = new javax.swing.JMenuItem();
         menuttht = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        menuqtdm = new javax.swing.JMenuItem();
+        menuqtnd = new javax.swing.JMenuItem();
 
         jMenuItem5.setText("jMenuItem5");
 
@@ -213,6 +216,12 @@ public class FormCanBo extends javax.swing.JFrame {
         });
         menuttht.add(jMenuItem1);
 
+        menuqtdm.setText("Quản trị danh mục");
+        menuttht.add(menuqtdm);
+
+        menuqtnd.setText("Quản trị người dùng");
+        menuttht.add(menuqtnd);
+
         jMenuBar1.add(menuttht);
 
         setJMenuBar(jMenuBar1);
@@ -223,7 +232,7 @@ public class FormCanBo extends javax.swing.JFrame {
     private void menuThemHoNgheoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuThemHoNgheoActionPerformed
         // TODO add your handling code here:
 
-        if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
+        if (!(canbo instanceof CanBoXa) || !canbo.isTrangThai()) {
             JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm hộ nghèo");
             return;
         }
@@ -232,7 +241,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
 
         if (pnThemHoNgheo == null) {
-            pnThemHoNgheo = new PnThemHoNgheo(userInfo);
+            pnThemHoNgheo = new PnThemHoNgheo(canbo);
             pnNoiDung.add(pnThemHoNgheo);
             pnThemHoNgheo.setVisible(true);
             pnNoiDung.validate();
@@ -249,7 +258,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
 
         if (pnThongTin == null) {
-            pnThongTin = new PnThongTinHeThong(userInfo);
+            pnThongTin = new PnThongTinHeThong(canbo);
             pnNoiDung.add(pnThongTin);
             pnThongTin.setVisible(true);
             pnNoiDung.validate();
@@ -267,7 +276,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
         
         if (pnTimKiemHn == null) {
-            pnTimKiemHn = new PnTimKiemHoNgheo(userInfo);
+            pnTimKiemHn = new PnTimKiemHoNgheo(canbo);
             pnNoiDung.add(pnTimKiemHn);
             pnTimKiemHn.setVisible(true);
             pnNoiDung.validate();
@@ -284,7 +293,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
         
         if (pnBaoCao == null) {
-            pnBaoCao = new PnBaoCaoDanhSach(userInfo);
+            pnBaoCao = new PnBaoCaoDanhSach(canbo);
             pnNoiDung.add(pnBaoCao);
             pnBaoCao.setVisible(true);
             pnNoiDung.validate();
@@ -301,7 +310,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
         
         if (pnTimKiemHn == null) {
-            pnTimKiemHn = new PnTimKiemHoNgheo(userInfo);
+            pnTimKiemHn = new PnTimKiemHoNgheo(canbo);
             pnNoiDung.add(pnTimKiemHn);
             pnTimKiemHn.setVisible(true);
             pnNoiDung.validate();
@@ -318,7 +327,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
 
         if (pnTimKiemKn == null) {
-            pnTimKiemKn = new PnTimKiemKhauNgheo(userInfo);
+            pnTimKiemKn = new PnTimKiemKhauNgheo(canbo);
             pnNoiDung.add(pnTimKiemKn);
             pnTimKiemKn.setVisible(true);
             pnNoiDung.validate();
@@ -330,7 +339,7 @@ public class FormCanBo extends javax.swing.JFrame {
 
     private void btthemhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemhnActionPerformed
         // TODO add your handling code here:
-         if (userInfo.getCapQL() < 3 || !userInfo.isTrangThai()) {
+         if (!(canbo instanceof CanBoXa) || !canbo.isTrangThai()) {
             JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm hộ nghèo");
             return;
         }
@@ -339,7 +348,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
 
         if (pnThemHoNgheo == null) {
-            pnThemHoNgheo = new PnThemHoNgheo(userInfo);
+            pnThemHoNgheo = new PnThemHoNgheo(canbo);
             pnNoiDung.add(pnThemHoNgheo);
             pnThemHoNgheo.setVisible(true);
             pnNoiDung.validate();
@@ -361,7 +370,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
 
         if (pnThongTin == null) {
-            pnThongTin = new PnThongTinHeThong(userInfo);
+            pnThongTin = new PnThongTinHeThong(canbo);
             pnNoiDung.add(pnThongTin);
             pnThongTin.setVisible(true);
             pnNoiDung.validate();
@@ -379,7 +388,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
         
         if (pnBaoCao == null) {
-            pnBaoCao = new PnBaoCaoDanhSach(userInfo);
+            pnBaoCao = new PnBaoCaoDanhSach(canbo);
             pnNoiDung.add(pnBaoCao);
             pnBaoCao.setVisible(true);
             pnNoiDung.validate();
@@ -396,7 +405,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
         
         if (pnBaoCaoSL == null) {
-            pnBaoCaoSL = new PnBaoCaoSoLieu(userInfo);
+            pnBaoCaoSL = new PnBaoCaoSoLieu(canbo);
             pnNoiDung.add(pnBaoCaoSL);
             pnBaoCaoSL.setVisible(true);
             pnNoiDung.validate();
@@ -437,7 +446,7 @@ public class FormCanBo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormCanBo(userInfo).setVisible(true);
+                new FormCanBo(canbo).setVisible(true);
             }
         });
     }
@@ -458,6 +467,8 @@ public class FormCanBo extends javax.swing.JFrame {
     private javax.swing.JMenuItem menubaocaodanhsach;
     private javax.swing.JMenu menubcds;
     private javax.swing.JMenuItem menubcsl;
+    private javax.swing.JMenuItem menuqtdm;
+    private javax.swing.JMenuItem menuqtnd;
     private javax.swing.JMenu menuthemhn;
     private javax.swing.JMenuItem menutimhn;
     private javax.swing.JMenuItem menutimkn;

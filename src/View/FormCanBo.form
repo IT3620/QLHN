@@ -83,6 +83,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuqtdm">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb; danh m&#x1ee5;c"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuqtnd">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb; ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

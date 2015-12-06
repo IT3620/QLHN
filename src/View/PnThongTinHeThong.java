@@ -5,8 +5,10 @@
  */
 package View;
 
-import Control.DKCanBo;
+import Control.QLCanBo;
 import Model.CanBo;
+import Model.CanBoHuyen;
+import Model.CanBoTinh;
 import Model.DiaBan;
 import Model.HeThong;
 
@@ -19,39 +21,42 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-    private static CanBo userInfo;
-    public PnThongTinHeThong(CanBo userInfo) {
-        this.userInfo = userInfo;
+    private static CanBo canbo;
+
+    public PnThongTinHeThong(CanBo canbo) {
+        PnThongTinHeThong.canbo = canbo;
         initComponents();
-        txthoten.setText(userInfo.getHoTen());
-        txtcap.setText((userInfo.getCapQL()==1)?"Tỉnh":(userInfo.getCapQL() == 2)? "Huyện" : "Xã");
-        DiaBan db = DKCanBo.layDiaBan(userInfo.getCapQL(), userInfo.getDiaBanQL());
-        switch (userInfo.getCapQL()) {
+        txthoten.setText(canbo.getHoTen());
+        txtcap.setText((canbo instanceof CanBoTinh) ? "Tỉnh" : (canbo instanceof CanBoHuyen) ? "Huyện" : "Xã");
+        DiaBan db = QLCanBo.layDiaBan(canbo.getCapQL(), canbo.getDiaBanQL());
+
+        switch (canbo.getCapQL()) {
             case 1:
                 lbhuyen.setVisible(false);
                 txthuyen.setVisible(false);
                 lbxa.setVisible(false);
                 txtxa.setVisible(false);
-                txttinh.setText(db.getTinh());
+                txttinh.setText(db.getTinh().ten);
                 break;
             case 2:
                 lbxa.setVisible(false);
                 txtxa.setVisible(false);
-                txttinh.setText(db.getTinh());
-                txthuyen.setText(db.getHuyen());
+                txttinh.setText(db.getTinh().ten);
+                txthuyen.setText(db.getHuyen().ten);
                 break;
             default:
-                txttinh.setText(db.getTinh());
-                txthuyen.setText(db.getHuyen());
-                txtxa.setText(db.getXa());
+                txttinh.setText(db.getTinh().ten);
+                txthuyen.setText(db.getHuyen().ten);
+                txtxa.setText(db.getXa().ten);
+                break;
         }
-        
-        txtngheott.setText(""+HeThong.ngheoTT);
-        txtnheont.setText(""+HeThong.ngheoNT);
-        txtcanngheont.setText(""+HeThong.canNgheoNT);
-        txtcanngheott.setText(""+HeThong.canNgheoTT);
-        txtnamngheo.setText(""+HeThong.namNgheo);
-        cbttrangthai.setSelected(userInfo.isTrangThai());
+
+        txtngheott.setText("" + HeThong.ngheoTT);
+        txtnheont.setText("" + HeThong.ngheoNT);
+        txtcanngheont.setText("" + HeThong.canNgheoNT);
+        txtcanngheott.setText("" + HeThong.canNgheoTT);
+        txtnamngheo.setText("" + HeThong.namNgheo);
+        cbttrangthai.setSelected(canbo.isTrangThai());
     }
 
     /**
@@ -195,7 +200,7 @@ public class PnThongTinHeThong extends javax.swing.JPanel {
         lbquyencs.setText("Quyền chỉnh sửa");
         jLayeredPane1.add(lbquyencs, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
 
-        add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, 340));
+        add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 600, 340));
     }// </editor-fold>//GEN-END:initComponents
 
 

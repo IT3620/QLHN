@@ -8,6 +8,10 @@ public class DanhMuc {
         this.id = id;
         this.ten = ten;
     }
+
+    DanhMuc() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     @Override
     public String toString()

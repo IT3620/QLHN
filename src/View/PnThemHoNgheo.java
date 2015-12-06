@@ -10,7 +10,8 @@ import Model.KhauNgheo;
 import Model.CanBo;
 import Model.HeThong;
 import Model.DiaBan;
-import Control.DKCanBo;
+import Control.QLCanBo;
+import Model.CanBoXa;
 import Model.HoNgheo;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
@@ -32,24 +33,24 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
     /**
      * Creates new form PnThemHoNgheo
      */
-    private static CanBo userInfo;
+    private static CanBo canbo;
     private static JFrame father;
     private static HoNgheo hoNgheo;
     private static final ArrayList<KhauNgheo> listkn = new ArrayList<>();
     private static boolean themMoi = true;
 
-    public PnThemHoNgheo(CanBo userInfo) {
-        this.userInfo = userInfo;
+    public PnThemHoNgheo(CanBo canbo) {
+        this.canbo = canbo;
 
         initComponents();
         loadComBox();
         loadDiaBan();
         xemDanhSachKN();
-        
+
         txtnamngheo.setText("" + HeThong.namNgheo);
         btchinhsua.setEnabled(false);
 
-        if (userInfo.isTrangThai() == false) {
+        if (canbo.isTrangThai() == false) {
             btchinhsua.setVisible(false);
             btthemhn.setVisible(false);
             btthemkn.setVisible(false);
@@ -340,8 +341,9 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
     private void txtthunhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtthunhapFocusLost
         // TODO add your handling code here:
         int tn;
-        if (txtthunhap.getText().equals(""))
+        if (txtthunhap.getText().equals("")) {
             return;
+        }
         try {
             tn = Integer.parseInt(txtthunhap.getText()) * 1000;
         } catch (Exception ex) {
@@ -356,7 +358,7 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
             return;
         }
 
-        if (userInfo.getIdKhuVuc() == 1) {
+        if (canbo.getIdKhuVuc() == 1) {
             if (tn > HeThong.canNgheoNT) {
                 JOptionPane.showMessageDialog(this, "Thu nhập không nằm trong đối tượng hộ nghèo hoặc cận nghèo");
                 txtthunhap.setText("");
@@ -400,13 +402,13 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
 
         try {
             int idHoNgheo = Integer.parseInt(txtmahn.getText());
-            HoNgheo hoNgheo = DKCanBo.layThongTinHN(idHoNgheo);
+            HoNgheo hoNgheo = canbo.layThongTinHN(idHoNgheo);
             if (hoNgheo == null) {
                 JOptionPane.showMessageDialog(this, "Mã hộ nghèo không tồn tại", "Thông báo lỗi", 2);
                 xoaHienThi();
             }
             hienThiHoNgheo(hoNgheo, idHoNgheo);
-            
+
             themMoi = false;
             btthemhn.setText("Thêm Cũ");
         } catch (Exception ex) {
@@ -471,31 +473,33 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
                 return;
             }
 
-            HoNgheo hoNgheo = new HoNgheo(txthotench.getText(), txtxom.getText(), userInfo.getDiaBanQL(), getIDInt(cbxdantocch), getIDInt(cbxphanloai), Integer.parseInt(txtthunhap.getText()) * 1000, getIDInt(cbxnuoc), getIDInt(cbxnguyennhan), cbDaCapThe.isSelected() ? true : false, getIDInt(cbxnhao));
+            HoNgheo hoNgheo = new HoNgheo(txthotench.getText(), txtxom.getText(), canbo.getDiaBanQL(), getIDInt(cbxdantocch), getIDInt(cbxphanloai), Integer.parseInt(txtthunhap.getText()) * 1000, getIDInt(cbxnuoc), getIDInt(cbxnguyennhan), cbDaCapThe.isSelected() ? true : false, getIDInt(cbxnhao));
             for (KhauNgheo kn : listkn) {
                 hoNgheo.themKN(kn);
             }
 
-            if (themMoi) {
-                int idHoNgheo = DKCanBo.themHoNgheo(hoNgheo);
-                if (idHoNgheo >= 0) {
-                    if (DKCanBo.themVaoDanhSachHN(idHoNgheo, HeThong.namNgheo)) {
-                        JOptionPane.showMessageDialog(this, "Đã thêm thành công hộ nghèo, mã hộ nghèo là:  " + idHoNgheo, "Thêm hộ nghèo thành công", 1);
-                        txtmahn.setText("" + idHoNgheo);
-                        listkn.clear();
+            if ((canbo instanceof CanBoXa) && canbo.isTrangThai()) {
+                if (themMoi) {
+                    int idHoNgheo = ((CanBoXa)canbo).themHoNgheo(hoNgheo);
+                    if (idHoNgheo >= 0) {
+                        if (((CanBoXa)canbo).themVaoDanhSachHN(idHoNgheo, HeThong.namNgheo)) {
+                            JOptionPane.showMessageDialog(this, "Đã thêm thành công hộ nghèo, mã hộ nghèo là:  " + idHoNgheo, "Thêm hộ nghèo thành công", 1);
+                            txtmahn.setText("" + idHoNgheo);
+                            listkn.clear();
+                        }
                     }
-                }
-            } else {
-                int idHoNgheo = Integer.parseInt(txtmahn.getText());
-                if (!DKCanBo.themVaoDanhSachHN(idHoNgheo, HeThong.namNgheo)) {
-                    JOptionPane.showMessageDialog(this, "Hộ nghèo đã được thêm lại từ trước.", "Thất bại", 1);
-                } else if (DKCanBo.suaHoNgheo(hoNgheo, idHoNgheo)) {
-                    JOptionPane.showMessageDialog(this, "Đã thêm hộ nghèo cũ thành công", "Thành công", 1);
                 } else {
-                    DKCanBo.xoaKhoiDanhSachHN(idHoNgheo, HeThong.namNgheo);
-                    JOptionPane.showMessageDialog(this, "Kiểm tra lại thông tin hộ nghèo", "Thất bại", 1);
-                }
+                    int idHoNgheo = Integer.parseInt(txtmahn.getText());
+                    if (!((CanBoXa)canbo).themVaoDanhSachHN(idHoNgheo, HeThong.namNgheo)) {
+                        JOptionPane.showMessageDialog(this, "Hộ nghèo đã được thêm lại từ trước.", "Thất bại", 1);
+                    } else if (((CanBoXa)canbo).suaHoNgheo(hoNgheo, idHoNgheo)) {
+                        JOptionPane.showMessageDialog(this, "Đã thêm hộ nghèo cũ thành công", "Thành công", 1);
+                    } else {
+                        ((CanBoXa)canbo).xoaKhoiDanhSachHN(idHoNgheo, HeThong.namNgheo);
+                        JOptionPane.showMessageDialog(this, "Kiểm tra lại thông tin hộ nghèo", "Thất bại", 1);
+                    }
 
+                }
             }
 
         } catch (HeadlessException | NumberFormatException ex) {
@@ -583,10 +587,10 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
         }
         txthotench.setText(hoNgheo.getTenCH());
         txtxom.setText(hoNgheo.getXom());
-        DiaBan db = DKCanBo.layDiaBan(3, hoNgheo.getIdXa());
-        txtxa.setText(db.getXa());
-        txthuyen.setText(db.getHuyen());
-        cbxkhuvuc.setSelectedIndex(userInfo.getIdKhuVuc() - 1);
+        DiaBan db = QLCanBo.layDiaBan(3, hoNgheo.getIdXa());
+        txtxa.setText(db.getXa().ten);
+        txthuyen.setText(db.getHuyen().ten);
+        cbxkhuvuc.setSelectedIndex(canbo.getIdKhuVuc() - 1);
         cbxdantocch.setSelectedIndex(hoNgheo.getIdDanToc() - 1);
         txtthunhap.setText("" + hoNgheo.getThuNhapTB() / 1000);
         cbxphanloai.setSelectedIndex(hoNgheo.getIdPhanLoai() - 1);
@@ -670,10 +674,10 @@ public final class PnThemHoNgheo extends javax.swing.JPanel {
     }
 
     public void loadDiaBan() {
-        DiaBan db = DKCanBo.layDiaBan(userInfo.getCapQL(), userInfo.getDiaBanQL());
-        txthuyen.setText(db.getHuyen());
-        txtxa.setText(db.getXa());
-        cbxkhuvuc.setSelectedIndex(userInfo.getIdKhuVuc() - 1);
+        DiaBan db = QLCanBo.layDiaBan(canbo.getCapQL(), canbo.getDiaBanQL());
+        txthuyen.setText(db.getHuyen().ten);
+        txtxa.setText(db.getXa().ten);
+        cbxkhuvuc.setSelectedIndex(canbo.getIdKhuVuc() - 1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

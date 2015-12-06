@@ -5,11 +5,10 @@
  */
 package View;
 
-import Control.DKCanBo;
-import Control.DKCanBo;
+import Control.QLCanBo;
 import Model.CanBo;
 import Model.DanhMuc;
-import Model.DiaBanInt;
+import Model.DiaBan;
 import Model.HeThong;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
@@ -32,8 +31,8 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
         }
         if (userInfo.getCapQL() == 3) {
             cbxhuyen.setEnabled(false);
-            DiaBanInt db = DKCanBo.layDiaBanInt(3, userInfo.getDiaBanQL());
-            cbxhuyen.setSelectedIndex(db.getHuyen());
+            DiaBan db = QLCanBo.layDiaBan(3, userInfo.getDiaBanQL());
+            cbxhuyen.setSelectedIndex(db.getHuyen().id);
             cbxxa.setSelectedIndex(userInfo.getDiaBanQL());
             cbxxa.setEnabled(false);
         }
@@ -150,6 +149,7 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
                 "Mã hộ nghèo", "Họ tên", "Năm sinh", "Xã", "Huyện", "Dân tộc", "Đối tượng", "Nghề nghiệp"
             }
         ));
+        tbdskn.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane2.setViewportView(tbdskn);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 920, 600));
@@ -233,7 +233,7 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
     }
     
     public void loadDanhSachHuyen() {
-        ArrayList<DanhMuc> dsHuyen = DKCanBo.layDanhSachHuyen();
+        ArrayList<DanhMuc> dsHuyen = QLCanBo.layDanhSachHuyen();
         cbxhuyen.removeAllItems();
         cbxhuyen.addItem("Tất cả");
         if (dsHuyen != null)
@@ -242,7 +242,7 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
     }
 
     public  void loadDanhSachXa(int huyen) {
-        ArrayList<DanhMuc> dsXa = DKCanBo.layDanhSachXa(huyen);
+        ArrayList<DanhMuc> dsXa = QLCanBo.layDanhSachXa(huyen);
         cbxxa.removeAllItems();
         cbxxa.addItem("Tất cả");
         if (dsXa != null)
@@ -343,6 +343,6 @@ public final class PnTimKiemKhauNgheo extends javax.swing.JPanel {
                     "                         dbo.tbHuyen ON dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen\n" +
                     " WHERE " + ten+ huyen + xa + dantoc + quanhe + doituong + ns + nam + " 1 = 1 " +
                     "ORDER BY Huyện, Xã, dbo.tbKhauNgheo.HoTen";
-        DKCanBo.LoadData(sql, tbdskn);
+        QLCanBo.LoadData(sql, tbdskn);
     }
 }

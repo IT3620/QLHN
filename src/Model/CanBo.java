@@ -1,22 +1,30 @@
-
 package Model;
 
-public class CanBo {
-    private String idCanBo;
-    private String matKhau;
-    private String hoTen;
-    private int capQL;
-    private int diaBanQL;
-    private boolean trangThai;
-    private int idKhuVuc;
+public abstract class CanBo {
 
-    public CanBo(String IDCanBo, String matKhau, String HoTen, int CapQL, int DiaBanQL, boolean TrangThai) {
+    protected final String idCanBo;
+    protected final String matKhau;
+    protected final String hoTen;
+    protected final int diaBanQL;
+    protected final boolean trangThai;
+    protected int idKhuVuc;
+
+    public CanBo(String IDCanBo, String matKhau, String HoTen, int DiaBanQL, boolean TrangThai) {
         this.idCanBo = IDCanBo;
         this.matKhau = matKhau;
         this.hoTen = HoTen;
-        this.capQL = CapQL;
         this.diaBanQL = DiaBanQL;
         this.trangThai = TrangThai;
+    }
+
+    public int getCapQL() {
+        if (this instanceof CanBoXa) {
+            return 3;
+        } else if (this instanceof CanBoHuyen) {
+            return 2;
+        } else {
+            return 1;
+        }
     }
 
     public void setIdKhuVuc(int idKhuVuc) {
@@ -35,10 +43,6 @@ public class CanBo {
         return hoTen;
     }
 
-    public int getCapQL() {
-        return capQL;
-    }
-
     public int getDiaBanQL() {
         return diaBanQL;
     }
@@ -51,7 +55,9 @@ public class CanBo {
         return idKhuVuc;
     }
 
+    public DiaBan getDiaBan() {
+        return CoSoDuLieu.layDiaBan(getCapQL(), diaBanQL);
+    }
     
-    
-    
+    public abstract HoNgheo layThongTinHN(int idHoNgheo);
 }
