@@ -18,7 +18,6 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import net.proteanit.sql.*;
 
 public class CoSoDuLieu {
 
@@ -34,7 +33,7 @@ public class CoSoDuLieu {
             Connection conn = DriverManager.getConnection("jdbc:sqlserver://localhost:6789;instance=SQLEXPRESS;databaseName=QLHN", "sa", "1900100co");
             return conn;
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ket noi co so du lieu that bai", "Thong bao", 2);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Thong bao", 2);
             return null;
         }
     }
@@ -61,7 +60,258 @@ public class CoSoDuLieu {
             return null;
         }
     }
-
+    public static int timhuyen(int idxa)
+    {
+        int idhuyen=0;
+        try
+        {
+            String sql ="SELECT     dbo.tbXa.IDHuyen FROM  dbo.tbHuyen INNER JOIN\n" +
+"            dbo.tbXa ON dbo.tbHuyen.IDHuyen = dbo.tbXa.IDHuyen\n" +
+"            where IDXa="+idxa;
+            pst = conn.prepareStatement(sql);
+            rs= pst.executeQuery();
+            rs.next();
+            idhuyen= Integer.parseInt(rs.getString(1));
+        }
+        catch(Exception ex)
+        {     
+        }
+        return idhuyen;
+    }
+      public static boolean themdanhmuc(int IDbang , int id , String noidung) {
+        try {
+            String sql = "";
+            String tenbang="", tenid="", tennd="";
+            switch (IDbang) {              
+                case 2:
+                    tenbang = "dbo.tbDanToc";
+                    tenid = "dbo.tbDanToc.IDDanToc";
+                    tennd = "dbo.tbDanToc.TenDT"; 
+                    break;
+                case 3:
+                    tenbang = "dbo.tbDoiTuong";
+                    tenid = "dbo.tbDoiTuong.IDDoiTuong";
+                    tennd = "dbo.tbDoiTuong.TenDoiTuong"; 
+                    break;
+                case 4 :
+                    tenbang = "dbo.tbKhuVuc";
+                    tenid = "dbo.tbKhuVuc.IDKhuVuc";
+                    tennd = "dbo.tbKhuVuc.TenKhuVuc"; 
+                    break;
+                case 5 :
+                    tenbang = "dbo.tbNgheNghiep";
+                    tenid = "dbo.tbDanToc.IDNgheNghiep";
+                    tennd = "dbo.tbDanToc.TenNN"; 
+                    break;
+                case 6 :
+                    tenbang = "dbo.tbNguyenNhan";
+                    tenid = "dbo.tbNguyenNhan.IDNguyenNhan";
+                    tennd = "dbo.tbNguyenNhan.TenNN";   
+                    break;
+                case 7 : 
+                    tenbang = "dbo.tbNhaO";
+                    tenid = "dbo.tbNhaO.IDNhaO";
+                    tennd = "dbo.tbNhaO.TenNhaO"; 
+                    break;
+                case 8 :
+                    tenbang = "dbo.tbNuoc";
+                    tenid = "dbo.tbNuoc.IDNuoc";
+                    tennd = "dbo.tbNuoc.TenNuoc"; 
+                    break;
+                case 9 :
+                    tenbang = "dbo.tbQuanHe";
+                    tenid = "dbo.tbQuanHe.IDQuanHeCH";
+                    tennd = "dbo.tbQuanHe.TenQH"; 
+                    break;
+                default :
+                    break;
+            }
+            sql = "INSERT INTO " + tenbang + "(" + tenid + "," + tennd+")" + " values("+id+ ", " + "N'" + noidung+"')";
+            pst = conn.prepareStatement(sql);         
+            pst.executeUpdate();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+    public static boolean themhuyen(String id , String noidung)
+    {
+        String sql="INSERT INTO dbo.tbHuyen (IDHuyen,TenHuyen,IDTinh) values ("+id+",N'"+noidung+"',1)";
+        try {         
+            pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+   }
+    public static boolean themxa(String id, String noidung, int idhuyen, int idkhuvuc)
+    {
+        String sql ="INSERT INTO dbo.tbXa (IDXa,TenXa,IDHuyen,IDKhuVuc) values ("+id+",N'"+noidung+"',"+idhuyen+","+idkhuvuc+")";
+         try {         
+            pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+    public static String selectdanhmuc(int idbang)
+    {
+        String sql ="";
+        String select=null;
+        String tenbang=null;
+        try{
+                switch(idbang)
+                {
+                    case 0: select = "IDHuyen as 'Mã Huyện',TenHuyen as 'Tên Huyện'";
+                            tenbang ="dbo.tbHuyen";
+                        break;
+                    case 1: select = "dbo.tbXa.IDXa as 'ID Xã', dbo.tbXa.TenXa as 'Tên Xã', dbo.tbHuyen.TenHuyen as 'Tên Huyện', dbo.tbKhuVuc.TenKhuVuc as 'Tên Khu Vực'";
+                            tenbang =" dbo.tbHuyen INNER JOIN dbo.tbXa ON dbo.tbHuyen.IDHuyen = dbo.tbXa.IDHuyen INNER JOIN dbo.tbKhuVuc ON dbo.tbXa.IDKhuVuc = dbo.tbKhuVuc.IDKhuVuc ORDER BY dbo.tbXa.IDXa";
+                        break;
+                    case 2: select = "IDDanToc AS 'ID Dân Tộc', TenDT AS 'Tên Dân Tộc'";
+                            tenbang="dbo.tbDanToc";
+                        break;
+                    case 3 : select = "IDDoiTuong as 'ID Đối tượng', TenDoiTuong as 'Tên đối tượng'";
+                            tenbang= " dbo.tbDoiTuong";
+                        break;
+                    case 4 : select ="IDKhuVuc as 'ID Khu Vực', TenKhuVuc as 'Tên Khu Vực'";
+                            tenbang="dbo.tbKhuVuc";
+                        break;
+                    case 5 : select ="IDNgheNghiep as 'ID Nghề Nghiệp', TenNN as 'Tên Nghề Nghiệp'";
+                               tenbang ="dbo.tbNgheNghiep";
+                               break;
+                    case 6 : select ="IDNguyenNhan as 'ID Nguyên Nhân Nghèo', TenNN as 'Tên Nguyên Nhân Nghèo'";
+                               tenbang ="dbo.tbNguyenNhan";
+                               break;
+                    case 7 : select ="IDNhaO as 'ID Nhà Ở', TenNhaO as 'Tên Nhà Ở'";
+                               tenbang ="dbo.tbNhaO";
+                               break;
+                    case 8 :  select ="IDNuoc as 'ID Nươc', TenNuoc as 'Tên Loại Nước Sinh Hoạt'";
+                               tenbang ="dbo.tbNuoc";
+                               break;
+                    case 9 :  select ="IDQuanHeCH as 'ID Quan Hệ', TenQH as 'Tên Quan Hệ'";
+                               tenbang ="dbo.tbQuanHe";
+                               break;
+                    default : break;
+                }
+                 sql="SELECT "+select +"from "+tenbang;
+                 pst = conn.prepareStatement(sql);
+                pst.executeQuery();
+                 return sql;
+            }
+        catch(Exception ex){
+            return sql;
+        }    
+    }
+    public static void xodanhmuc(int idbang, int id)
+    {
+        String sql="";
+        String tenbang="";
+          try {
+              switch(idbang)
+              {
+                  case 0 : tenbang="dbo.tbHuyen where IDHuyen=";         
+                      break;
+                  case 1 : tenbang="dbo.tbXa where IDXa=";         
+                      break;
+                  case 2 : tenbang="dbo.tbDantoc where IDDanToc=";
+                      break;
+                  case 3 :  tenbang="dbo.tbDoiTuong where IDDoiTuong=";
+                      break;
+                  case 4 : tenbang="dbo.tbKhuVuc where IDKhuVuc=";
+                      break;
+                  case 5 : tenbang="dbo.tbNgheNghiep where IDNgheNghiep=";
+                      break;
+                  case 6 : tenbang="dbo.tbNguyenNhan where IDNguyenNhan=";
+                      break;
+                  case 7 : tenbang="dbo.tbNhaO where IDNhaO=";
+                      break;
+                  case 8 : tenbang="dbo.tbNuoc where IDNuoc=";
+                      break;
+                  case 9 : tenbang="dbo.tbQuanHe where IDQuanHeCH=";
+                      break;
+              }
+            sql = "DELETE FROM "+tenbang + id;
+            pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
+    public static void suadanhmuc(int bang, int idcot, String tendanhmuc)
+    {
+        String sql="";
+        String tenbang="";
+        String Tendm="";
+        String IDdm="";
+        try
+        {
+            switch(bang)
+            {
+                case 0 : tenbang="dbo.tbHuyen";
+                         Tendm="TenHuyen";
+                         IDdm="IDHuyen";
+                    break;
+                case 2 : tenbang="dbo.tbDanToc";
+                        Tendm="TenDT";
+                        IDdm="IDDanToc";
+                    break;
+                case 3 : tenbang="dbo.tbDoiTuong";
+                        Tendm="TenDoiTuong";
+                        IDdm="IDDoiTuong";
+                    break;
+                case 4 : tenbang="dbo.tbKhuVuc";
+                        Tendm="TenKhuVuc";
+                        IDdm="IDKhuVUc";
+                    break;
+                case 5 : tenbang="dbo.tbNgheNghiep";
+                        Tendm="TenNN";
+                        IDdm="IDNgheNghiep";
+                    break;
+                case 6 : tenbang="dbo.tbNguyenNhan";
+                        Tendm="TenNN";
+                        IDdm="IDNguyenNhan";
+                    break;
+                 case 7 : tenbang="dbo.tbNhaO";
+                        Tendm="TenNhaO";
+                        IDdm="IDNhaO";
+                    break;
+                 case 8 : tenbang="dbo.tbNuoc";
+                        Tendm="TenNuoc";
+                        IDdm="IDNuoc";
+                    break;
+                 case 9 : tenbang="dbo.tbQuanHe";
+                        Tendm="TenQuanHe";
+                        IDdm="IDQuanHeCH";
+                    break;
+                 default : break;
+            }
+            sql="UPDATE "+tenbang+" SET "+Tendm+"= N'"+tendanhmuc+"' where "+IDdm+"="+idcot;
+            pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+        }
+        catch(Exception ex)
+        { 
+        }
+    }
+    public static void suaxa(int idxa, String tenxa, int idhuyen, int idkhuvuc)
+    {
+        try
+        {
+            String sql ="Update dbo.tbXa set TenXa=N'"+tenxa+"',"+"IDHuyen="+idhuyen+",IDKhuVuc="+idkhuvuc+" where IDXa="+idxa;
+            pst= conn.prepareStatement(sql);
+            pst.executeUpdate();
+        }
+        catch(Exception ex)
+                {
+                    
+                }
+    }    
+//     public static boolean selectDanhMuc()
+//     {
+//         
+//     }
     public static void LoadData(String sql, JTable tb) {
         try {
             pst = conn.prepareStatement(sql);
@@ -358,7 +608,46 @@ public class CoSoDuLieu {
             return dsHuyen;
         }
     }
-
+    public static void themuser(int capql, String tendn, String matkhau, String hoten, int diabanql, boolean trangthai)
+    {
+         String sql ="INSERT INTO dbo.tbCanBo (IDCanBo,MatKhau,HoTen,CapQL,DiaBanQL,TrangThai) values ('"+tendn+"','"+matkhau+"',N'"+hoten+"',"+capql+","+diabanql+",'"+trangthai+"')";
+          
+         try {
+             pst = conn.prepareStatement(sql);
+              pst.executeUpdate();
+         }
+         catch(Exception ex){
+             JOptionPane.showMessageDialog(null,"Lỗi","Thông báo",2);
+         }
+         
+    }
+    public static void xoauser(String id)
+    {
+        String sql ="DELETE FROM dbo.tbCanBo where IDCanBo ='"+id+"'";
+        try{
+            
+              pst = conn.prepareStatement(sql);
+              pst.executeUpdate();
+                }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null,"Lỗi","Thông báo",2);
+        }
+    }
+    public static void suauser(int capql, String tendn, String matkhau, String hoten, int diabanql, boolean trangthai)
+    {
+        String sql="Update dbo.tbCanBo set CapQL='"+capql+"',MatKhau='"+matkhau+"',HoTen=N'"+hoten+"',DiaBanQL='"+diabanql+"',TrangThai='"+trangthai+"' where IDCanBo='"+tendn+"'";
+          try{
+            
+              pst = conn.prepareStatement(sql);
+              pst.executeUpdate();
+                }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null,"Lỗi","Thông báo",2);
+        }
+    }
+    
     public static ArrayList<DanhMuc> layDanhSachXa(int idHuyen) {
         ArrayList<DanhMuc> dsHuyen = null;
         try {
@@ -376,6 +665,9 @@ public class CoSoDuLieu {
         }
     }
 }
+
+
+
 
 class MyTableModel extends DefaultTableModel {
 

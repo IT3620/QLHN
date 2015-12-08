@@ -46,4 +46,9 @@ public class CanBoXa extends CanBo {
         String sql = "";
         return sql;
     }
+
+    @Override
+    public int getCapQL() {
+        return 3;
+    }
 }

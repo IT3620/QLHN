@@ -75,23 +75,29 @@
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb;"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="menuthongtinhethong">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin h&#x1ec7; th&#x1ed1;ng"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuthongtinhethongActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuqtdm">
+            <MenuItem class="javax.swing.JMenuItem" name="menuquantridanhmuc">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb; danh m&#x1ee5;c"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuquantridanhmucActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuqtnd">
+            <MenuItem class="javax.swing.JMenuItem" name="menuquantringuoidung">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb; ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuquantringuoidungActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -212,7 +218,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btquantriht">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb; h&#x1ec7; th&#x1ed1;ng"/>
+        <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin h&#x1ec7; th&#x1ed1;ng"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btquantrihtActionPerformed"/>
@@ -246,6 +252,32 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="208" y="8" width="200" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="btndanhmuc">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb; danh m&#x1ee5;c"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndanhmucActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="10" y="240" width="120" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnuser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n tr&#x1ecb; user"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnuserActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="10" y="280" width="120" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

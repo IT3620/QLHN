@@ -22,6 +22,7 @@ public class FormCanBo extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private static PnQuanTriDanhMuc pnQTDM;
     private static PnThongTinHeThong pnThongTin;
     private static PnBaoCaoDanhSach pnBaoCao;
     private static PnBaoCaoSoLieu pnBaoCaoSL;
@@ -29,11 +30,29 @@ public class FormCanBo extends javax.swing.JFrame {
     private static PnThemHoNgheo pnThemHoNgheo;
     private static PnTimKiemHoNgheo pnTimKiemHn;
     private static PnTimKiemKhauNgheo pnTimKiemKn;
-
+    private static PnQuanTriNguoiDung pnQTND;
     public FormCanBo(CanBo canbo) {
         FormCanBo.canbo = canbo;
         initComponents();
-
+        if(canbo.getCapQL()==3)
+        {
+            menuquantridanhmuc.setVisible(false);
+            menuquantringuoidung.setVisible(false);
+            btndanhmuc.setVisible(false);
+            btnuser.setVisible(false);
+        }
+        else if(canbo.getCapQL()==2) {
+            menuquantridanhmuc.setVisible(false);
+            menuquantringuoidung.setVisible(false);
+            menuThemHoNgheo.setVisible(false);
+            btthemhn.setVisible(false);
+            btndanhmuc.setVisible(false);
+            btnuser.setVisible(false);
+        }
+        else {
+            menuThemHoNgheo.setVisible(false);
+            btthemhn.setVisible(false);
+        }
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
@@ -76,6 +95,8 @@ public class FormCanBo extends javax.swing.JFrame {
         btquantriht = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btndanhmuc = new javax.swing.JButton();
+        btnuser = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuthemhn = new javax.swing.JMenu();
         menuThemHoNgheo = new javax.swing.JMenuItem();
@@ -86,9 +107,9 @@ public class FormCanBo extends javax.swing.JFrame {
         menubaocaodanhsach = new javax.swing.JMenuItem();
         menubcsl = new javax.swing.JMenuItem();
         menuttht = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        menuqtdm = new javax.swing.JMenuItem();
-        menuqtnd = new javax.swing.JMenuItem();
+        menuthongtinhethong = new javax.swing.JMenuItem();
+        menuquantridanhmuc = new javax.swing.JMenuItem();
+        menuquantringuoidung = new javax.swing.JMenuItem();
 
         jMenuItem5.setText("jMenuItem5");
 
@@ -138,7 +159,7 @@ public class FormCanBo extends javax.swing.JFrame {
         });
         getContentPane().add(btbaocaosl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 164, 123, -1));
 
-        btquantriht.setText("Quản trị hệ thống");
+        btquantriht.setText("Thông tin hệ thống");
         btquantriht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btquantrihtActionPerformed(evt);
@@ -153,6 +174,22 @@ public class FormCanBo extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setText("Phần mềm quản lý hộ nghèo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 8, 200, -1));
+
+        btndanhmuc.setText("Quản trị danh mục");
+        btndanhmuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndanhmucActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btndanhmuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, -1));
+
+        btnuser.setText("Quản trị user");
+        btnuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnuserActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 120, -1));
 
         menuthemhn.setText("Quản lý");
 
@@ -208,19 +245,29 @@ public class FormCanBo extends javax.swing.JFrame {
 
         menuttht.setText("Quản trị");
 
-        jMenuItem1.setText("Thông tin hệ thống");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuthongtinhethong.setText("Thông tin hệ thống");
+        menuthongtinhethong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuthongtinhethongActionPerformed(evt);
             }
         });
-        menuttht.add(jMenuItem1);
+        menuttht.add(menuthongtinhethong);
 
-        menuqtdm.setText("Quản trị danh mục");
-        menuttht.add(menuqtdm);
+        menuquantridanhmuc.setText("Quản trị danh mục");
+        menuquantridanhmuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuquantridanhmucActionPerformed(evt);
+            }
+        });
+        menuttht.add(menuquantridanhmuc);
 
-        menuqtnd.setText("Quản trị người dùng");
-        menuttht.add(menuqtnd);
+        menuquantringuoidung.setText("Quản trị người dùng");
+        menuquantringuoidung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuquantringuoidungActionPerformed(evt);
+            }
+        });
+        menuttht.add(menuquantringuoidung);
 
         jMenuBar1.add(menuttht);
 
@@ -251,7 +298,7 @@ public class FormCanBo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuThemHoNgheoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuthongtinhethongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuthongtinhethongActionPerformed
         // TODO add your handling code here:
         for (Component frmChild : pnNoiDung.getComponents()) {
             frmChild.setVisible(false);
@@ -267,7 +314,7 @@ public class FormCanBo extends javax.swing.JFrame {
             pnNoiDung.validate();
 
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuthongtinhethongActionPerformed
 
     private void menutimhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menutimhnActionPerformed
         // TODO add your handling code here:
@@ -415,6 +462,74 @@ public class FormCanBo extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_menubcslActionPerformed
 
+    private void menuquantridanhmucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuquantridanhmucActionPerformed
+        // TODO add your handling code here:
+         for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnQTDM == null) {
+            pnQTDM = new PnQuanTriDanhMuc(canbo);
+            pnNoiDung.add(pnQTDM);
+            pnQTDM.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnQTDM.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_menuquantridanhmucActionPerformed
+
+    private void btndanhmucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndanhmucActionPerformed
+        // TODO add your handling code here:
+        for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnQTDM == null) {
+            pnQTDM = new PnQuanTriDanhMuc(canbo);
+            pnNoiDung.add(pnQTDM);
+            pnQTDM.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnQTDM.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_btndanhmucActionPerformed
+
+    private void menuquantringuoidungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuquantringuoidungActionPerformed
+        // TODO add your handling code here:
+         for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnQTND == null) {
+            pnQTND = new PnQuanTriNguoiDung(canbo);
+            pnNoiDung.add(pnQTND);
+            pnQTND.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnQTND.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_menuquantringuoidungActionPerformed
+
+    private void btnuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnuserActionPerformed
+        // TODO add your handling code here:
+         for (Component frmChild : pnNoiDung.getComponents()) {
+            frmChild.setVisible(false);
+        }
+        
+        if (pnQTND == null) {
+            pnQTND = new PnQuanTriNguoiDung(canbo);
+            pnNoiDung.add(pnQTND);
+            pnQTND.setVisible(true);
+            pnNoiDung.validate();
+        } else {
+            pnQTND.setVisible(true);
+            pnNoiDung.validate();
+        } 
+    }//GEN-LAST:event_btnuserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -454,6 +569,8 @@ public class FormCanBo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btbaocao;
     private javax.swing.JButton btbaocaosl;
+    private javax.swing.JButton btndanhmuc;
+    private javax.swing.JButton btnuser;
     private javax.swing.JButton btquantriht;
     private javax.swing.JButton btthemhn;
     private javax.swing.JButton bttimkiemhn;
@@ -461,15 +578,15 @@ public class FormCanBo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem menuThemHoNgheo;
     private javax.swing.JMenuItem menubaocaodanhsach;
     private javax.swing.JMenu menubcds;
     private javax.swing.JMenuItem menubcsl;
-    private javax.swing.JMenuItem menuqtdm;
-    private javax.swing.JMenuItem menuqtnd;
+    private javax.swing.JMenuItem menuquantridanhmuc;
+    private javax.swing.JMenuItem menuquantringuoidung;
     private javax.swing.JMenu menuthemhn;
+    private javax.swing.JMenuItem menuthongtinhethong;
     private javax.swing.JMenuItem menutimhn;
     private javax.swing.JMenuItem menutimkn;
     private javax.swing.JMenu menuttht;

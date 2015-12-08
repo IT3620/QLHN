@@ -33,7 +33,9 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
             cbxxa.setEnabled(false);
         }
     }
- 
+    public int menudsindex(JComboBox cbx){
+        return cbx.getSelectedIndex();
+    }
     
     public void loadDanhSachHuyen() {
         ArrayList<DanhMuc> dsHuyen = QLCanBo.layDanhSachHuyen();
@@ -108,6 +110,26 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
             xa = "dbo.tbXa.IDXa = " + getIDInt(cbxxa) + " AND ";
             showxa=" - XÃ " +getStrHoa(cbxxa);
         }
+        String showtieude="";
+        if(menudsindex(cbxloadfromds)==1)
+        {
+            sql2= " AND dbo.tbDanhSachHN.NamNgheo = " +namngheo+
+"              AND (dbo.tbHoNgheo.IDHoNgheo NOT IN (SELECT     tbHoNgheo_1.IDHoNgheo\n" +
+"							 FROM       dbo.tbDanhSachHN AS tbDanhSachHN_1 INNER JOIN dbo.tbHoNgheo AS tbHoNgheo_1 ON tbDanhSachHN_1.IDHoNgheo = tbHoNgheo_1.IDHoNgheo\n" +
+"                            WHERE      tbDanhSachHN_1.NamNgheo ="+(namngheo-1)+"))";
+            showtieude=" MỚI ";
+        }
+        else if(menudsindex(cbxloadfromds)==2)
+        {
+            sql2= " AND dbo.tbDanhSachHN.NamNgheo = " +(namngheo-1)+
+"              AND (dbo.tbHoNgheo.IDHoNgheo NOT IN (SELECT     tbHoNgheo_1.IDHoNgheo\n" +
+"							 FROM       dbo.tbDanhSachHN AS tbDanhSachHN_1 INNER JOIN dbo.tbHoNgheo AS tbHoNgheo_1 ON tbDanhSachHN_1.IDHoNgheo = tbHoNgheo_1.IDHoNgheo\n" +
+"                            WHERE      tbDanhSachHN_1.NamNgheo ="+namngheo+"))";
+            showtieude=" THOÁT NGHÈO ";
+        }
+        else {
+            sql2 = " AND dbo.tbDanhSachHN.NamNgheo = " +namngheo;
+        }
         
         sql1 = "SELECT     dbo.tbHoNgheo.IDHoNgheo as 'Mã hộ nghèo', dbo.tbHoNgheo.TenCH as 'Tên chủ hộ', dbo.tbHoNgheo.Xom as 'Thôn/Xóm',"+loadcot+" dbo.tbKhuVuc.TenKhuVuc as 'Khu vực', dbo.tbPhanLoai.TenPL as 'Phân loại',\n" +
 "                      dbo.tbDanToc.TenDT as 'Dân tộc',dbo.tbDanhSachHN.NamNgheo as 'Năm nghèo'\n" +
@@ -118,9 +140,9 @@ public class PnBaoCaoDanhSach extends javax.swing.JPanel {
 "                      dbo.tbXa ON dbo.tbHoNgheo.IDXa = dbo.tbXa.IDXa INNER JOIN\n" +
 "                      dbo.tbKhuVuc ON dbo.tbXa.IDKhuVuc = dbo.tbKhuVuc.IDKhuVuc INNER JOIN\n" +
 "                    dbo.tbHuyen ON dbo.tbXa.IDHuyen = dbo.tbHuyen.IDHuyen\n" +
-"                WHERE NamNgheo ="+namngheo +" and " +xa +huyen+ "1=1";
+"                WHERE " +xa +huyen+ "1=1" +sql2;
         CoSoDuLieu.LoadData(sql1, tbbaocaodanhsach);
-        this.txtbaocaods.setText("BẢNG DANH SÁCH HỘ NGHÈO "+showxa+showhuyen+"-"+shownam );
+        this.txtbaocaods.setText("BẢNG DANH SÁCH HỘ NGHÈO "+showtieude+showxa+showhuyen+"-"+shownam );
     }
      
     @SuppressWarnings("unchecked")

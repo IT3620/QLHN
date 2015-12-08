@@ -17,15 +17,8 @@ public abstract class CanBo {
         this.trangThai = TrangThai;
     }
 
-    public int getCapQL() {
-        if (this instanceof CanBoXa) {
-            return 3;
-        } else if (this instanceof CanBoHuyen) {
-            return 2;
-        } else {
-            return 1;
-        }
-    }
+    public abstract int getCapQL();
+     
 
     public void setIdKhuVuc(int idKhuVuc) {
         this.idKhuVuc = idKhuVuc;
